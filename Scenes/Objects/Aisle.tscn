@@ -16,22 +16,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97277, 0)
 [node name="Products1" parent="Products" instance=ExtResource("2_l3vab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1593, 1.79873, 0.0701838)
 size = Vector3(1.20618, 2.43542, 18.4404)
-product = null
 
 [node name="Products2" parent="Products" instance=ExtResource("2_l3vab")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18756, 4.47363, 0.0701838)
 size = Vector3(1.20618, 2.43542, 18.4404)
-product = null
 
 [node name="Products3" parent="Products" instance=ExtResource("2_l3vab")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.28495, 1.82296, 0.0701838)
 size = Vector3(1.20618, 2.43542, 18.4404)
-product = null
 
 [node name="Products4" parent="Products" instance=ExtResource("2_l3vab")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.285, 4.474, 0.07)
 size = Vector3(1.20618, 2.43542, 18.4404)
-product = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8932, 0.0662231)

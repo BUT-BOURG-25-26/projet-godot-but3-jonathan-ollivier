@@ -10,9 +10,10 @@ albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_baryh"]
 
-[node name="Products" type="CSGBox3D" node_paths=PackedStringArray("products_container")]
+[node name="Products" type="CSGBox3D" node_paths=PackedStringArray("pop_sound", "products_container")]
 material = SubResource("StandardMaterial3D_baryh")
 script = ExtResource("1_8lfcg")
+pop_sound = NodePath("pop")
 products_container = NodePath("ProductsContainer")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -29,3 +30,5 @@ box = NodePath("../..")
 [node name="pop" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_qcuo0")
 volume_db = -20.0
+
+[connection signal="clicked" from="." to="." method="_on_clicked"]

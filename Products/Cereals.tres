@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_vck4o")
 name = "Cereals"
+unit_price = 5.0
 model = ExtResource("1_ixfgd")
 rotation = Vector3(0, 0, 0)
 translate = Vector3(0, 0, 0)

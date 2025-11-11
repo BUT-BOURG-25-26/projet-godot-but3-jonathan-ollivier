@@ -1,12 +1,11 @@
 extends Node3D
 class_name BoxStorage
 
+signal clicked(player: Player,  mouseButton: int)
+
 @export var box: Box
 
-# --------------------
-# Public methods
-# --------------------
-func interact(player: Player, mouseButton: int = MOUSE_BUTTON_LEFT):
+func _on_clicked(player: Player, mouseButton: int) -> void:
 	if !box:
 		if player.in_hands is not Box:
 			return
@@ -18,7 +17,3 @@ func interact(player: Player, mouseButton: int = MOUSE_BUTTON_LEFT):
 		if !player.in_hands:
 			player.get_in_hand(box)
 			self.box = null
-		
-	
-	
-	

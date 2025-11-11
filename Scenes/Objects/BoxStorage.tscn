@@ -14,3 +14,5 @@ collision_layer = 4
 [node name="Collision" type="CollisionShape3D" parent="Box1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00157821, 0.640813, -0.000617981)
 shape = SubResource("BoxShape3D_13f64")
+
+[connection signal="clicked" from="." to="." method="_on_clicked"]

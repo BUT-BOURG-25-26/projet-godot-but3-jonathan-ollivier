@@ -3,6 +3,7 @@ class_name Product
 
 @export_subgroup("General")
 @export var name: String
+@export var unit_price: float
 
 @export_subgroup("Model")
 @export var model: PackedScene

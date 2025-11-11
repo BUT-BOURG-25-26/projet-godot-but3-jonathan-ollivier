@@ -1,18 +1,20 @@
 [gd_scene load_steps=8 format=3 uid="uid://crc2w6r6oe2fx"]
 
 [ext_resource type="Script" uid="uid://bfqowfvf0y2po" path="res://Scripts/checkout_counter.gd" id="1_tv5kb"]
-[ext_resource type="PackedScene" uid="uid://cs4ec2g6ndq33" path="res://Assets/Models/Furnitures/checkount_counter.glb" id="2_lujsa"]
+[ext_resource type="PackedScene" uid="uid://cx46ay7vrj6kp" path="res://Assets/Models/Furnitures/checkout_counter.glb" id="1_y3l1q"]
 [ext_resource type="PackedScene" uid="uid://doxwiqilr4owf" path="res://Scenes/Objects/MixedProductStorage.tscn" id="2_sc7cp"]
 [ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/product.gd" id="3_rw25l"]
 [ext_resource type="Resource" uid="uid://dvqby7m3fd1mq" path="res://Products/Cereals.tres" id="4_wbs6f"]
 [ext_resource type="Resource" uid="uid://c7idfdkiuc6a4" path="res://Products/Flashlight.tres" id="5_lujsa"]
 [ext_resource type="AudioStream" uid="uid://kkyi11ilufdv" path="res://Assets/Sounds/bip.wav" id="7_lujsa"]
 
-[node name="CheckoutCounter" type="Node3D" node_paths=PackedStringArray("products", "sound", "price_label")]
+[node name="CheckoutCounter" type="Node3D" node_paths=PackedStringArray("products", "sound")]
 script = ExtResource("1_tv5kb")
 products = NodePath("Products")
 sound = NodePath("bip")
-price_label = NodePath("Label3D")
+
+[node name="checkout_counter" parent="." instance=ExtResource("1_y3l1q")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 
 [node name="Products" parent="." instance=ExtResource("2_sc7cp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44958, 5.36544, 0.020874)
@@ -22,19 +24,5 @@ products = Array[ExtResource("3_rw25l")]([ExtResource("4_wbs6f"), ExtResource("4
 [node name="bip" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_lujsa")
 volume_db = -30.0
-
-[node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(14.9998, 0, -0.0819427, 0.0140573, 14.7776, 2.57322, 0.0807279, -2.57326, 14.7774, 3.80071, 5.45472, -0.361544)
-pixel_size = 0.0001
-modulate = Color(0, 0, 0, 1)
-text = "TOTAL : 0€
-PAID: 10€
-DUE: 10€"
-font_size = 115
-outline_size = 0
-line_spacing = 200.0
-
-[node name="checkount_counter" parent="." instance=ExtResource("2_lujsa")]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 
 [connection signal="clicked" from="Products" to="." method="_on_products_clicked"]

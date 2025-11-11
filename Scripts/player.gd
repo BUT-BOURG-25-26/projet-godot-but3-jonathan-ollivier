@@ -67,7 +67,7 @@ func handle_click(event):
 				if Global.is_on_layer(hit.collider, Global.PICKABLE) && !in_hands:
 					get_in_hand(hit.collider)
 				elif Global.is_on_layer(hit.collider, Global.STOCKAGE):
-					hit.collider.get_parent().interact(self, event.button_index)
+					hit.collider.get_parent().clicked.emit(self, event.button_index)
 				else:
 					if in_hands:
 						clear_hand()
