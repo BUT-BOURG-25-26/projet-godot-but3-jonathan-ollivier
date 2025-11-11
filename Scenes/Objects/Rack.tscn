@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc8oft2ea6kas"]
+
+[ext_resource type="PackedScene" uid="uid://cvx106ixfngn0" path="res://Assets/Models/Furnitures/rack.glb" id="1_6xbog"]
+[ext_resource type="PackedScene" uid="uid://brqqbgm4jdpw1" path="res://Scenes/Objects/BoxStorage.tscn" id="2_5mguh"]
+
+[node name="Rack" type="Node3D"]
+
+[node name="rack" parent="." instance=ExtResource("1_6xbog")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="BoxStorage1" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02602, 1.95518)
+
+[node name="BoxStorage2" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02602, 0.0461979)
+
+[node name="BoxStorage3" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02602, -1.90136)
+
+[node name="BoxStorage4" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.96334, 1.95518)
+
+[node name="BoxStorage5" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.96334, 0.0461979)
+
+[node name="BoxStorage6" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.96334, -1.90136)
+
+[node name="BoxStorage7" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.18053, 1.95518)
+
+[node name="BoxStorage8" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.18053, 0.0461979)
+
+[node name="BoxStorage9" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.18053, -1.90136)
+
+[node name="BoxStorage10" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.31917, 1.95518)
+
+[node name="BoxStorage11" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.31917, 0.0461979)
+
+[node name="BoxStorage12" parent="." instance=ExtResource("2_5mguh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.31917, -1.90136)

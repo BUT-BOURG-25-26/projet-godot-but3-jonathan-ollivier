@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxkvd1pav6i0w"]
+
+[ext_resource type="PackedScene" uid="uid://dgr27hj2k1mm3" path="res://Assets/Models/Furnitures/aisle.glb" id="1_7e5i7"]
+[ext_resource type="PackedScene" uid="uid://djltg67jr76w8" path="res://Scenes/Objects/Products.tscn" id="2_l3vab"]
+[ext_resource type="Resource" uid="uid://c7idfdkiuc6a4" path="res://Products/Flashlight.tres" id="3_ix5ha"]
+[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/product.gd" id="4_ix5ha"]
+[ext_resource type="PackedScene" uid="uid://cdmsys1borril" path="res://Assets/Models/Groceries/Cereals/cereals.glb" id="5_ix5ha"]
+
+[sub_resource type="Resource" id="Resource_ix5ha"]
+script = ExtResource("4_ix5ha")
+model = ExtResource("5_ix5ha")
+rotation = Vector3(0, 0, 0)
+translate = Vector3(0, 0, 0)
+gap = 0.05
+metadata/_custom_type_script = "uid://f0fxh6ic88e4"
+
+[node name="Aisle" type="Node3D"]
+
+[node name="model" parent="." instance=ExtResource("1_7e5i7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97277, 0)
+
+[node name="Products" type="Node3D" parent="."]
+
+[node name="Products1" parent="Products" instance=ExtResource("2_l3vab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1593, 1.79873, 0.0701838)
+size = Vector3(1.20618, 2.43542, 18.4404)
+product = ExtResource("3_ix5ha")
+count = 100
+
+[node name="Products2" parent="Products" instance=ExtResource("2_l3vab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18756, 4.47363, 0.0701838)
+size = Vector3(1.20618, 2.43542, 18.4404)
+product = SubResource("Resource_ix5ha")
+count = 100
+
+[node name="Products3" parent="Products" instance=ExtResource("2_l3vab")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.28495, 1.82296, 0.0701838)
+size = Vector3(1.20618, 2.43542, 18.4404)
+product = null
+
+[node name="Products4" parent="Products" instance=ExtResource("2_l3vab")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.285, 4.474, 0.07)
+size = Vector3(1.20618, 2.43542, 18.4404)
+product = null

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://kd5d27hpp8qc"]
+
+[ext_resource type="PackedScene" uid="uid://cb0ut7n0reaop" path="res://Assets/Models/Misc/box.glb" id="1_g0g3h"]
+[ext_resource type="Script" uid="uid://by7lddgiq35s3" path="res://Scripts/box.gd" id="1_rueyf"]
+[ext_resource type="PackedScene" uid="uid://cdmsys1borril" path="res://Assets/Models/Groceries/Cereals/cereals.glb" id="2_ohx7e"]
+[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/product.gd" id="3_v63sv"]
+
+[sub_resource type="Resource" id="Resource_u1u4y"]
+script = ExtResource("3_v63sv")
+model = ExtResource("2_ohx7e")
+rotation = Vector3(0, 0, 0)
+translate = Vector3(0, 0, 0)
+gap = 0.05
+metadata/_custom_type_script = "uid://f0fxh6ic88e4"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohx7e"]
+
+[node name="Box" type="Node3D" node_paths=PackedStringArray("img_generator", "viewport", "image_container")]
+script = ExtResource("1_rueyf")
+product = SubResource("Resource_u1u4y")
+img_generator = NodePath("SubViewport/ImgGenerator")
+viewport = NodePath("SubViewport")
+image_container = NodePath("Model/ImageContainer")
+
+[node name="Model" parent="." instance=ExtResource("1_g0g3h")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="ImageContainer" type="CSGBox3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0358717, 0.511771, -0.0423279)
+size = Vector3(0.533081, 0.001, 0.359802)
+material = SubResource("StandardMaterial3D_ohx7e")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+render_target_update_mode = 4
+
+[node name="ImgGenerator" type="Node3D" parent="SubViewport"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.08685, 5.49315, 0)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/ImgGenerator"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.52239, 0, 0.0130644)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/ImgGenerator"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.761308, 0, 0.148704)

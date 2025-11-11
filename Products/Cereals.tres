@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Product" load_steps=3 format=3 uid="uid://dvqby7m3fd1mq"]
+
+[ext_resource type="PackedScene" uid="uid://cdmsys1borril" path="res://Assets/Models/Groceries/Cereals/cereals.glb" id="1_ixfgd"]
+[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/product.gd" id="2_vck4o"]
+
+[resource]
+script = ExtResource("2_vck4o")
+name = "Cereals"
+model = ExtResource("1_ixfgd")
+rotation = Vector3(0, 0, 0)
+translate = Vector3(0, 0, 0)
+gap = 0.05
+metadata/_custom_type_script = "uid://f0fxh6ic88e4"

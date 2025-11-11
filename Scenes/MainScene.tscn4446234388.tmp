@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://bisacees2rd6b"]
+
+[ext_resource type="PackedScene" uid="uid://djltg67jr76w8" path="res://Scenes/Products.tscn" id="1_hpc76"]
+[ext_resource type="PackedScene" uid="uid://bj8v3nhoe2pe6" path="res://Models/Groceries/Cereals/cereals.glb" id="2_nhkr4"]
+[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/product.gd" id="3_7rqgy"]
+[ext_resource type="PackedScene" uid="uid://c67rjkq8wl5r6" path="res://Models/Furnitures/Aisle.glb" id="4_7rqgy"]
+
+[sub_resource type="Resource" id="Resource_nhkr4"]
+script = ExtResource("3_7rqgy")
+model = ExtResource("2_nhkr4")
+gap = 0.05
+metadata/_custom_type_script = "uid://f0fxh6ic88e4"
+
+[node name="MainScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 11.6695, 2.6914, 6.30262)
+
+[node name="Products" parent="." node_paths=PackedStringArray("box") instance=ExtResource("1_hpc76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.228769, -2.38419e-07, -1.67803)
+product = SubResource("Resource_nhkr4")
+count = 120
+box = NodePath("../Aisle/Box1")
+
+[node name="Aisle" parent="." instance=ExtResource("4_7rqgy")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -8)
+visible = false
+
+[node name="Box1" type="CSGBox3D" parent="Aisle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93856, 1.60647, -11.2157)
+visible = false
+size = Vector3(1.05353, 2.40125, 19.2209)
+
+[node name="Box2" type="CSGBox3D" parent="Aisle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93856, 4.26231, -11.2157)
+visible = false
+size = Vector3(1.05353, 2.40125, 19.2209)

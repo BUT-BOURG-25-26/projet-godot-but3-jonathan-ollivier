@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxkvd1pav6i0w"]
+
+[ext_resource type="PackedScene" uid="uid://dgr27hj2k1mm3" path="res://Assets/Models/Furnitures/aisle.glb" id="1_7e5i7"]
+[ext_resource type="PackedScene" uid="uid://djltg67jr76w8" path="res://Scenes/Objects/Products.tscn" id="2_l3vab"]
+[ext_resource type="PackedScene" uid="uid://inla5megi4yf" path="res://Assets/Models/Groceries/Electronics/flashlight.glb" id="3_dwqt1"]
+[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/product.gd" id="4_ix5ha"]
+
+[sub_resource type="Resource" id="Resource_xuj82"]
+script = ExtResource("4_ix5ha")
+model = ExtResource("3_dwqt1")
+rotation = Vector3(0, 0, 0)
+translate = Vector3(0, 0, 0)
+gap = 0.05
+metadata/_custom_type_script = "uid://f0fxh6ic88e4"
+
+[node name="Aisle" type="Node3D"]
+
+[node name="model" parent="." instance=ExtResource("1_7e5i7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97277, 0)
+
+[node name="Products" type="Node3D" parent="."]
+
+[node name="Products1" parent="Products" instance=ExtResource("2_l3vab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18756, 1.82296, 0.0701838)
+size = Vector3(1.2627, 2.46301, 19.219)
+product = SubResource("Resource_xuj82")
+count = 100
+
+[node name="Products2" parent="Products" instance=ExtResource("2_l3vab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18756, 4.47363, 0.0701838)
+size = Vector3(1.2627, 2.46301, 19.219)
+
+[node name="Products3" parent="Products" instance=ExtResource("2_l3vab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28495, 1.82296, 0.0701838)
+size = Vector3(1.2627, 2.46301, 19.219)
+
+[node name="Products4" parent="Products" instance=ExtResource("2_l3vab")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.285, 4.474, 0.07)
+size = Vector3(1.2627, 2.46301, 19.219)

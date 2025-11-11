@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bisacees2rd6b"]
+
+[ext_resource type="PackedScene" uid="uid://djltg67jr76w8" path="res://Scenes/Products.tscn" id="1_hpc76"]
+[ext_resource type="PackedScene" uid="uid://bj8v3nhoe2pe6" path="res://Models/Groceries/Cereals/cereals.glb" id="2_nhkr4"]
+[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/product.gd" id="3_7rqgy"]
+
+[sub_resource type="Resource" id="Resource_nhkr4"]
+script = ExtResource("3_7rqgy")
+model = ExtResource("2_nhkr4")
+metadata/_custom_type_script = "uid://f0fxh6ic88e4"
+
+[node name="MainScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.998386, -0.0567973, 0, 0.0567973, 0.998386, 0, 0, 0, 1, 0, 0.697207, 3.21882)
+
+[node name="Products" parent="." instance=ExtResource("1_hpc76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.228769, -2.38419e-07, -1.67803)
+product = SubResource("Resource_nhkr4")
+count = 120
