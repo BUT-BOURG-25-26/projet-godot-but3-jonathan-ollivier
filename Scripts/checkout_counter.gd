@@ -8,6 +8,8 @@ class_name CheckoutCounter
 var total_price: float = 0
 var paid: float = 0
 
+static var scene: PackedScene = preload("res://Scenes/Objects/CheckoutCounter.tscn")
+
 func _ready():
 	update_label()
 
@@ -26,4 +28,6 @@ func _on_products_clicked(player: Player, mouseButton: int) -> void:
 
 func update_label():
 	price_label.text = "TOTAL: %0.2f€\nPAID: %0.2f€\nDUE: %0.2f€" % [total_price, paid, max(0, paid - total_price)]
-	
+
+static func create():
+	return scene.instantiate()
