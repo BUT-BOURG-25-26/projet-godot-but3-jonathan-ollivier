@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var navigation_region: NavigationRegion3D
+
 func _ready() -> void:
 	for i in range(len(Global.products)):
 		var product = Global.products[i]
@@ -23,5 +25,7 @@ func _ready() -> void:
 	
 	var npc = NPC.create()
 	npc.position = Vector3(10, 10, -10)
-	add_child(npc)
+	navigation_region.add_child(npc)
+	
+	npc.go_to(Vector3(-10, 0, 10))
 	

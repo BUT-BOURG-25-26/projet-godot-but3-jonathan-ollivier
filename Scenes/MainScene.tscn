@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bisacees2rd6b"]
+[gd_scene load_steps=13 format=3 uid="uid://bisacees2rd6b"]
 
 [ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/main.gd" id="1_0iob3"]
 [ext_resource type="Script" uid="uid://dpvlnwcnceikr" path="res://Scripts/procedural_generation.gd" id="4_7rqgy"]
@@ -25,6 +25,8 @@ ambient_light_energy = 2.5
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nhkr4"]
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_7rqgy"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhkr4"]
 size = Vector3(120, 0.01, 120)
 
@@ -36,8 +38,9 @@ uv1_scale = Vector3(20, 20, 20)
 material = SubResource("StandardMaterial3D_y4jh7")
 size = Vector3(120, 0.01, 120)
 
-[node name="MainScene" type="Node3D"]
+[node name="MainScene" type="Node3D" node_paths=PackedStringArray("navigation_region")]
 script = ExtResource("1_0iob3")
+navigation_region = NodePath("Level/Ground/NavigationRegion3D")
 
 [node name="Player" parent="." instance=ExtResource("5_qxria")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
@@ -49,6 +52,9 @@ environment = SubResource("Environment_qxria")
 
 [node name="Ground" type="StaticBody3D" parent="Level"]
 physics_material_override = SubResource("PhysicsMaterial_nhkr4")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Level/Ground"]
+navigation_mesh = SubResource("NavigationMesh_7rqgy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Ground"]
 shape = SubResource("BoxShape3D_nhkr4")

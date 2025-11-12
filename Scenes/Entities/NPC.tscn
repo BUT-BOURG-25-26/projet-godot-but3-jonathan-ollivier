@@ -7,8 +7,9 @@
 radius = 1.26947
 height = 7.66614
 
-[node name="NPC" type="CharacterBody3D"]
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("agent")]
 script = ExtResource("1_p23k1")
+agent = NodePath("NavigationAgent3D")
 
 [node name="Model" parent="." instance=ExtResource("1_3twlq")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
@@ -16,3 +17,12 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.38336, 0)
 shape = SubResource("CapsuleShape3D_p23k1")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 11.37
+target_desired_distance = 11.37
+path_height_offset = 52.83
+path_max_distance = 48.41
+avoidance_enabled = true
+avoidance_layers = 7
+debug_enabled = true
