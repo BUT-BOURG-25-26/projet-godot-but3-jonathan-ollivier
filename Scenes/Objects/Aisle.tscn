@@ -7,8 +7,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_dwqt1"]
 size = Vector3(3.76563, 6.78641, 20.0878)
 
-[node name="Aisle" type="StaticBody3D"]
+[node name="Aisle" type="StaticBody3D" node_paths=PackedStringArray("products_storages")]
 script = ExtResource("1_f3t1a")
+products_storages = [NodePath("ProductsStorages/ProductsStorage1"), NodePath("ProductsStorages/ProductsStorage2"), NodePath("ProductsStorages/ProductsStorage3"), NodePath("ProductsStorages/ProductsStorage4")]
 
 [node name="model" parent="." instance=ExtResource("1_7e5i7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97277, 0)

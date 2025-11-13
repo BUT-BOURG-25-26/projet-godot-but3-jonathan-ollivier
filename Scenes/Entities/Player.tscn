@@ -7,6 +7,7 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gntrk"]
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "hands")]
+collision_layer = 8
 script = ExtResource("1_rpqav")
 camera = NodePath("Camera3D")
 hands = NodePath("Camera3D/Hands")

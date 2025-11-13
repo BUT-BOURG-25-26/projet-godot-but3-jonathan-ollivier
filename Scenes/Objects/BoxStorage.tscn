@@ -5,15 +5,19 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_13f64"]
 size = Vector3(2.45508, 1.28577, 1.83008)
 
-[node name="BoxStorage" type="Node3D"]
+[node name="BoxStorage" type="Node3D" node_paths=PackedStringArray("front")]
 script = ExtResource("1_ug8ci")
+front = NodePath("front")
 
 [node name="Box1" type="Area3D" parent="."]
 collision_layer = 4
 
 [node name="Collision" type="CollisionShape3D" parent="Box1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00157821, 0.640813, -0.000617981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.641, 0)
 shape = SubResource("BoxShape3D_13f64")
 debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="front" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.29311)
 
 [connection signal="clicked" from="." to="." method="_on_clicked"]

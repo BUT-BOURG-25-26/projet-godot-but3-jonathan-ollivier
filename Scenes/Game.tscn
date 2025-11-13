@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://bisacees2rd6b"]
 
-[ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/main.gd" id="1_0iob3"]
-[ext_resource type="Script" uid="uid://dpvlnwcnceikr" path="res://Scripts/procedural_generation.gd" id="4_7rqgy"]
-[ext_resource type="Texture2D" uid="uid://cjdifo2set12q" path="res://Assets/Materials/ground.jpg" id="4_qxria"]
-[ext_resource type="PackedScene" uid="uid://djxia0exild6r" path="res://Scenes/Entities/Player.tscn" id="5_qxria"]
+[ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/game.gd" id="1_kldst"]
+[ext_resource type="Texture2D" uid="uid://cjdifo2set12q" path="res://Assets/Materials/ground.jpg" id="2_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://djxia0exild6r" path="res://Scenes/Entities/Player.tscn" id="3_7lihs"]
+[ext_resource type="Script" uid="uid://dpvlnwcnceikr" path="res://Scripts/procedural_generation.gd" id="4_fgofq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxria"]
 sky_top_color = Color(0.384314, 0.756863, 0.898039, 1)
@@ -35,15 +35,15 @@ agent_radius = 1.27
 size = Vector3(120, 0.01, 120)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4jh7"]
-albedo_texture = ExtResource("4_qxria")
+albedo_texture = ExtResource("2_b2bpf")
 uv1_scale = Vector3(20, 20, 20)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nhkr4"]
 material = SubResource("StandardMaterial3D_y4jh7")
 size = Vector3(120, 0.01, 120)
 
-[node name="MainScene" type="Node3D" node_paths=PackedStringArray("navigation_region", "player")]
-script = ExtResource("1_0iob3")
+[node name="Game" type="Node3D" node_paths=PackedStringArray("navigation_region", "player")]
+script = ExtResource("1_kldst")
 navigation_region = NodePath("Level")
 player = NodePath("Level/Player")
 
@@ -63,8 +63,8 @@ shape = SubResource("BoxShape3D_nhkr4")
 mesh = SubResource("BoxMesh_nhkr4")
 skeleton = NodePath("../..")
 
-[node name="Player" parent="Level" instance=ExtResource("5_qxria")]
+[node name="Player" parent="Level" instance=ExtResource("3_7lihs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
 
 [node name="ProceduralGeneration" type="Node" parent="."]
-script = ExtResource("4_7rqgy")
+script = ExtResource("4_fgofq")

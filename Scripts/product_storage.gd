@@ -7,6 +7,7 @@ signal clicked(player: Player,  mouseButton: int)
 @export var count: int = 0
 @export var pop_sound: AudioStreamPlayer3D
 @export var products_container: Node3D
+@export var front: Node3D
 
 var product_grid: Vector3 = Vector3.ZERO
 var max_count: int = 0
@@ -85,20 +86,23 @@ func fill_aisle():
 	var delta = count - products_container.get_child_count()
 	
 	if delta < 0:
-		remove_products(-delta)
+		_remove_products(-delta)
 	elif delta > 0:
-		add_products(delta)
+		_add_products(delta)
 
+func set_count(count: int) -> void:
+	self.count = clamp(count, 0, max_count)
+	fill_aisle()
 # --------------------
 # Child management
 # --------------------
-func remove_products(amount: int):
+func _remove_products(amount: int):
 	for i in range(amount):
 		var last_child = products_container.get_child(-1)
 		if !last_child: return
 		last_child.queue_free()
 
-func add_products(amount: int):
+func _add_products(amount: int):
 	var skip = products_container.get_child_count()
 	for y in range(product_grid.y):
 		for x in range(product_grid.x):

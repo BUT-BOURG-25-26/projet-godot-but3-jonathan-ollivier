@@ -1,11 +1,19 @@
 extends Node3D
+class_name Game
+
+static var game: Game
 
 @export var navigation_region: NavigationRegion3D
 @export var player: Player
 
-var npc: NPC
+var aisles: Array[Aisle] = []
+var racks: Array[Rack] = []
+var npcs: Array[NPC] = []
+
 
 func _ready() -> void:
+	game = self
+	
 	for i in range(len(Global.products)):
 		var product = Global.products[i]
 		product.load()
@@ -20,22 +28,25 @@ func _ready() -> void:
 	
 	var aisle = Aisle.create()
 	aisle.position = Vector3(-8, 0, -5)
+	aisle.fill_randomly()
 	navigation_region.add_child(aisle)
+	aisles.append(aisle)
 	
 	var checkout_counter = CheckoutCounter.create()
 	checkout_counter.position = Vector3(7, 0, 11)
 	navigation_region.add_child(checkout_counter)
 	
-	npc = NPC.create()
-	npc.position = Vector3(10, 10, -10)
-	navigation_region.add_child(npc)
-	
 	navigation_region.bake_navigation_mesh()
 	
-	npc.go_to(Vector3(-10, 0, 10))
+	for i in range(4):
+		var npc = NPC.create()
+		npc.position = Vector3(20, 10, -10 + 5*i)
+		navigation_region.add_child(npc)
+	
 	
 func _process(delta):
 	if Input.is_action_pressed("dev"):
-		npc.go_to(player.global_position)
+		for npc in npcs:
+			npc.go_to(player.global_position)
 	
 	

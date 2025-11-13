@@ -4,6 +4,7 @@ class_name BoxStorage
 signal clicked(player: Player,  mouseButton: int)
 
 @export var box: Box
+@export var front: Node3D
 
 func _on_clicked(player: Player, mouseButton: int) -> void:
 	if !box:
