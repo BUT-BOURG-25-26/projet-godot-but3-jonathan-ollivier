@@ -1,8 +1,6 @@
 class_name ProductStorage
 extends CSGBox3D
 
-signal clicked(player: Player,  mouseButton: int)
-
 @export var product: Product = null
 @export var count: int = 0
 @export var pop_sound: AudioStreamPlayer3D
@@ -35,7 +33,7 @@ func _process(delta: float) -> void:
 # Public methods
 # --------------------
 
-func _on_clicked(player: Player, mouseButton: int) -> void:
+func _on_area_3d_clicked(player: Player, mouseButton: int) -> void:
 	if player.in_hands is not Box: 
 		return
 	

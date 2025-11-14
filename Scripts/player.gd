@@ -53,7 +53,7 @@ func _shoot_raycast():
 	var to = from + camera.project_ray_normal(mousePos) * REACH
 	var rayCaster = PhysicsRayQueryParameters3D.create(from, to)
 	rayCaster.collide_with_areas = true
-	rayCaster.collision_mask = Global.PICKABLE | Global.STOCKAGE
+	rayCaster.collision_mask = Global.CLICKABLE | Global.HOLDABLE
 	
 	var result = space_state.intersect_ray(rayCaster)
 	return result
@@ -63,13 +63,14 @@ func handle_click(event):
 		if event.pressed:
 			var hit = _shoot_raycast()
 			if hit:
-				if Global.is_on_layer(hit.collider, Global.PICKABLE) && !in_hands:
-					get_in_hand(hit.collider)
-				elif Global.is_on_layer(hit.collider, Global.STOCKAGE):
-					hit.collider.get_parent().clicked.emit(self, event.button_index)
-				else:
-					if in_hands:
-						clear_hand()
+				hit.collider.clicked.emit(self, event.button_index)
+				#if Global.is_on_layer(hit.collider, Global.PICKABLE) && !in_hands:
+					#get_in_hand(hit.collider)
+				#elif Global.is_on_layer(hit.collider, Global.STOCKAGE):
+					#hit.collider.get_parent().clicked.emit(self, )
+				#else:
+					#if in_hands:
+						#clear_hand()
 			else:
 				if in_hands:
 					clear_hand()

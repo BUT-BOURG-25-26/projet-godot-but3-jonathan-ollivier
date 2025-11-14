@@ -1,12 +1,10 @@
 extends Node3D
 class_name BoxStorage
 
-signal clicked(player: Player,  mouseButton: int)
-
 @export var box: Box
 @export var front: Node3D
 
-func _on_clicked(player: Player, mouseButton: int) -> void:
+func _on_box_clicked(player: Player, mouseButton: int) -> void:
 	if !box:
 		if player.in_hands is not Box:
 			return

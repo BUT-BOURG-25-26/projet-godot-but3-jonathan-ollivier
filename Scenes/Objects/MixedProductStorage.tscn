@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://doxwiqilr4owf"]
+[gd_scene load_steps=6 format=3 uid="uid://doxwiqilr4owf"]
 
 [ext_resource type="Script" uid="uid://dxdfu8pn2kxqc" path="res://Scripts/Objects/mixed_product_storage.gd" id="1_dqqog"]
+[ext_resource type="Script" uid="uid://dfmuuy21nqtsb" path="res://Scripts/Interfaces/clickable_area.gd" id="2_dqqog"]
 [ext_resource type="Script" uid="uid://doc54jjojw8yd" path="res://Scripts/Objects/products_collision.gd" id="3_7ppc4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_baryh"]
@@ -16,6 +17,8 @@ products_container = NodePath("ProductsContainer")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 4
+script = ExtResource("2_dqqog")
+metadata/_custom_type_script = "uid://dfmuuy21nqtsb"
 
 [node name="Collision" type="CollisionShape3D" parent="Area3D" node_paths=PackedStringArray("box")]
 shape = SubResource("BoxShape3D_baryh")
@@ -24,3 +27,5 @@ script = ExtResource("3_7ppc4")
 box = NodePath("../..")
 
 [node name="ProductsContainer" type="Node3D" parent="."]
+
+[connection signal="clicked" from="Area3D" to="." method="_on_area_3d_clicked"]

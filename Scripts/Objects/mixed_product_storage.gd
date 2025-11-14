@@ -47,3 +47,6 @@ func add_item(p: Product):
 	
 func hasProducts() -> bool:
 	return !products.is_empty()
+
+func _on_area_3d_clicked(player: Player, mouseButton: int) -> void:
+	clicked.emit(player, mouseButton)

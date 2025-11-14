@@ -3,8 +3,10 @@ extends Node
 
 var gravity := 20
 
-var PICKABLE := 1 << 1
-var STOCKAGE := 1 << 2
+var TERRAIN := 1 << 2
+var ENTITIES := 1 << 2
+var CLICKABLE := 1 << 2
+var HOLDABLE := 1 << 2
 
 var products: Array[Product] = []
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://brqqbgm4jdpw1"]
+[gd_scene load_steps=4 format=3 uid="uid://brqqbgm4jdpw1"]
 
 [ext_resource type="Script" uid="uid://bnnu28hbgfge5" path="res://Scripts/Objects/box_storage.gd" id="1_ug8ci"]
+[ext_resource type="Script" uid="uid://dfmuuy21nqtsb" path="res://Scripts/Interfaces/clickable_area.gd" id="2_snkul"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_13f64"]
 size = Vector3(2.45508, 1.28577, 1.83008)
@@ -9,10 +10,12 @@ size = Vector3(2.45508, 1.28577, 1.83008)
 script = ExtResource("1_ug8ci")
 front = NodePath("front")
 
-[node name="Box1" type="Area3D" parent="."]
+[node name="Box" type="Area3D" parent="."]
 collision_layer = 4
+script = ExtResource("2_snkul")
+metadata/_custom_type_script = "uid://dfmuuy21nqtsb"
 
-[node name="Collision" type="CollisionShape3D" parent="Box1"]
+[node name="Collision" type="CollisionShape3D" parent="Box"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.641, 0)
 shape = SubResource("BoxShape3D_13f64")
 debug_color = Color(0, 0.6, 0.701961, 1)
@@ -20,4 +23,4 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 [node name="front" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.29311)
 
-[connection signal="clicked" from="." to="." method="_on_clicked"]
+[connection signal="clicked" from="Box" to="." method="_on_box_clicked"]

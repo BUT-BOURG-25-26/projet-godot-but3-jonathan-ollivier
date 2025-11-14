@@ -48,3 +48,9 @@ static func create(product: Product) -> Box:
 	instance.product = product
 	instance.product_count = product.unit_per_box
 	return instance
+
+
+
+
+func _on_collider_clicked(player: Player, mouseButton: int) -> void:
+	pass # TODO
