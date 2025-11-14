@@ -6,6 +6,7 @@ extends CSGBox3D
 @export var pop_sound: AudioStreamPlayer3D
 @export var products_container: Node3D
 @export var front: Node3D
+@export var cooldown: Timer
 
 var product_grid: Vector3 = Vector3.ZERO
 var max_count: int = 0
@@ -34,6 +35,8 @@ func _process(delta: float) -> void:
 # --------------------
 
 func _on_area_3d_hold(player: Player, mouseButton: int) -> void:
+	if !cooldown.is_stopped():
+		return
 	if player.in_hands is not Box: 
 		return
 	
@@ -44,12 +47,14 @@ func _on_area_3d_hold(player: Player, mouseButton: int) -> void:
 			return
 		player.in_hands.product_count -= 1
 		add_one()
+		cooldown.start()
 		pop_sound.play()
 	elif mouseButton == MOUSE_BUTTON_RIGHT:
 		if !product || count <= 0 || player.in_hands is not Box || player.in_hands.product.name != product.name:
 			return
 		player.in_hands.product_count += 1
 		remove_one()
+		cooldown.start()
 		pop_sound.play()
 
 # --------------------

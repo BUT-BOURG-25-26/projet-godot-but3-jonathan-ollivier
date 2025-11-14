@@ -1,47 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5w6pk2n2tb5h"]
+[gd_scene load_steps=11 format=3 uid="uid://b5w6pk2n2tb5h"]
 
 [ext_resource type="PackedScene" uid="uid://d1k1fekl6xhk3" path="res://Assets/Models/Characters/Animated Woman.glb" id="1_3twlq"]
 [ext_resource type="Script" uid="uid://b1kl87y4haire" path="res://Scripts/NPC/npc.gd" id="1_p23k1"]
+[ext_resource type="PackedScene" uid="uid://cctrs8r3jfe3l" path="res://Assets/Models/Characters/Animated Woman 2.glb" id="2_j2byn"]
+[ext_resource type="PackedScene" uid="uid://c0t08g2aren7d" path="res://Assets/Models/Characters/Beach Character.glb" id="4_6p21c"]
+[ext_resource type="PackedScene" uid="uid://b8n1wcxydgwhi" path="res://Assets/Models/Characters/Casual Character.glb" id="5_q3ajh"]
+[ext_resource type="PackedScene" uid="uid://s530hy0sqogl" path="res://Assets/Models/Characters/Punk.glb" id="6_io0jy"]
+[ext_resource type="PackedScene" uid="uid://od7i0mq2who0" path="res://Assets/Models/Characters/Suit.glb" id="7_55dpn"]
+[ext_resource type="PackedScene" uid="uid://w5xpr2v51ww7" path="res://Assets/Models/Characters/Worker 2.glb" id="8_tfaek"]
+[ext_resource type="PackedScene" uid="uid://cw4pst2xjqcl8" path="res://Assets/Models/Characters/Worker.glb" id="9_eb2ov"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p23k1"]
 radius = 1.26947
 height = 7.66614
 
-[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("cooldown", "agent", "animation_player", "complaint_label", "complaint_timer")]
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("cooldown", "agent", "complaint_label", "complaint_timer")]
 collision_layer = 6
 script = ExtResource("1_p23k1")
 cooldown = NodePath("Cooldown")
 agent = NodePath("NavigationAgent3D")
-animation_player = NodePath("Model/AnimationPlayer")
 complaint_label = NodePath("Complaint")
 complaint_timer = NodePath("Complaint/ComplaintTimer")
+models = Array[PackedScene]([ExtResource("2_j2byn"), ExtResource("1_3twlq"), ExtResource("4_6p21c"), ExtResource("5_q3ajh"), ExtResource("6_io0jy"), ExtResource("7_55dpn"), ExtResource("8_tfaek"), ExtResource("9_eb2ov")])
 metadata/_custom_type_script = "uid://v4e8crodch6w"
-
-[node name="Model" parent="." instance=ExtResource("1_3twlq")]
-transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 0, 0, 0)
-
-[node name="Skeleton3D" parent="Model/RootNode/CharacterArmature" index="0"]
-bones/1/position = Vector3(4.53208e-06, 0.00934786, -3.20814e-05)
-bones/1/rotation = Quaternion(-0.0270281, 0.235439, -0.00655022, 0.971491)
-bones/4/rotation = Quaternion(0.153868, -0.237706, -0.00529316, 0.959058)
-bones/6/rotation = Quaternion(-0.00947105, 8.00391e-11, -1.89183e-10, 0.999955)
-bones/7/rotation = Quaternion(0.00267473, 2.09032e-06, -1.38647e-05, 0.999996)
-bones/10/rotation = Quaternion(-0.741918, -0.0413934, -0.176409, 0.645542)
-bones/11/rotation = Quaternion(-0.11985, -0.0209594, -0.19429, 0.973369)
-bones/25/rotation = Quaternion(-0.119294, 0.0572576, -0.0398883, 0.990404)
-bones/26/rotation = Quaternion(-0.0748089, 0.0279542, -0.00762858, 0.996777)
-bones/31/rotation = Quaternion(-0.116958, -0.00965458, -0.00323035, 0.993085)
-bones/34/rotation = Quaternion(0.131836, 0.274653, -0.0108175, 0.952401)
-bones/38/rotation = Quaternion(-0.741143, 0.171119, 0.108826, 0.639987)
-bones/39/rotation = Quaternion(-0.203003, -0.203246, 0.331849, 0.898531)
-bones/53/rotation = Quaternion(-0.119295, -0.0572576, 0.0398883, 0.990404)
-bones/56/rotation = Quaternion(-0.0310906, 0.0273529, -0.227078, 0.972996)
-bones/61/rotation = Quaternion(-0.254289, 0.351549, 0.248254, 0.866095)
-bones/62/rotation = Quaternion(0.131836, -0.274653, 0.0108175, 0.952401)
-bones/65/rotation = Quaternion(0.967948, 0.09701, -0.216961, 0.0812054)
-bones/66/rotation = Quaternion(0.270776, -2.27354e-08, 2.9024e-09, 0.962642)
-bones/68/rotation = Quaternion(0.9693, -0.0110234, 0.173056, 0.174321)
-bones/69/rotation = Quaternion(0.225896, -1.07555e-09, -4.18265e-09, 0.974151)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.38336, 0)
@@ -65,5 +46,3 @@ one_shot = true
 
 [connection signal="clicked" from="." to="." method="_on_clicked"]
 [connection signal="timeout" from="Complaint/ComplaintTimer" to="." method="_on_complaint_timer_timeout"]
-
-[editable path="Model"]

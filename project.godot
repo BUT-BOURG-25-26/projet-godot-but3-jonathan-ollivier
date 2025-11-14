@@ -81,3 +81,7 @@ alt={
 3d_physics/layer_3="Clickable"
 3d_physics/layer_4="Holdable"
 3d_physics/layer_5="Hoverable"
+
+[rendering]
+
+renderer/rendering_method="mobile"

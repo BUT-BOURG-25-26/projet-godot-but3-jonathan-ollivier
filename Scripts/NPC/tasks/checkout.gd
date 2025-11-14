@@ -2,17 +2,21 @@ extends Task
 class_name CheckoutTask
 
 var checkout_counter: CheckoutCounter
+var done: bool = false
 
 func _init(npc: NPC, cc: CheckoutCounter):
 	super._init(npc)
 	checkout_counter = cc
 
 func start():
+	if npc.products.is_empty():
+		done = true
+		return
 	var pos = checkout_counter.add_to_queue(npc)
 	npc.agent.target_position = checkout_counter.queue_position(pos)
 
 func finished():
-	return false
+	return done
 
 func loop():
 	if !npc.agent.is_target_reached():
@@ -39,7 +43,12 @@ func pathfind():
 		npc.animate(npc.animations.walk)
 
 func put_item():
-	npc.animate(npc.animations.interact)
 	var product = npc.products.pop_front()
 	checkout_counter.add_item(product)
+	
+	var look_at_pos = checkout_counter.global_position
+	look_at_pos.y = 0
+	npc.look_at(look_at_pos)
+	npc.animate(npc.animations.interact)
+	
 	npc.cooldown.start(1)

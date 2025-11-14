@@ -11,12 +11,13 @@ albedo_color = Color(1, 1, 1, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_baryh"]
 
-[node name="ProductStorage" type="CSGBox3D" node_paths=PackedStringArray("pop_sound", "products_container", "front")]
+[node name="ProductStorage" type="CSGBox3D" node_paths=PackedStringArray("pop_sound", "products_container", "front", "cooldown")]
 material = SubResource("StandardMaterial3D_baryh")
 script = ExtResource("1_8lfcg")
 pop_sound = NodePath("pop")
 products_container = NodePath("ProductsContainer")
 front = NodePath("front")
+cooldown = NodePath("Cooldown")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 8
@@ -37,6 +38,10 @@ volume_db = -20.0
 
 [node name="front" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
 
 [connection signal="hold" from="Area3D" to="." method="_on_area_3d_hold"]
 [connection signal="hovered" from="Area3D" to="." method="_on_area_3d_hovered"]

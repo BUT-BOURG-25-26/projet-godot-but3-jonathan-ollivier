@@ -29,7 +29,7 @@ func load() -> void:
 			break
 	
 	if mesh_instance:
-		var aabb: AABB =  mesh_instance.get_aabb() * Transform3D(Basis().from_euler(rotation), Vector3.ZERO)
+		var aabb: AABB =  mesh_instance.get_aabb() * Transform3D(Basis.from_euler(rotation), Vector3.ZERO)
 		
 		width = aabb.size.z + gap
 		height = aabb.size.y
@@ -38,5 +38,5 @@ func load() -> void:
 
 func create():
 	var instance: Node3D = model.instantiate()
-	instance.transform = Transform3D(Basis().from_euler(rotation), Vector3.ZERO)
+	instance.transform = Transform3D(Basis.from_euler(rotation), Vector3.ZERO)
 	return instance

@@ -16,7 +16,6 @@ var slurs = [
 	"On dirait que tu sauvegardes tes idées sur une disquette."
 ]
 
-
 var animations = {
 	walk = {
 		res = "CharacterArmature|Walk",
@@ -38,19 +37,23 @@ var animations = {
 
 @export var cooldown: Timer
 @export var agent: NavigationAgent3D
-@export var SPEED = 10
-@export var animation_player: AnimationPlayer
+@export var SPEED := randi_range(7, 13)
 @export var complaint_label: Label3D
 @export var complaint_timer: Timer
+@export var models: Array[PackedScene] = []
 
 var products: Array[Product] = []
 var tasks: Array[Task] = []
 var current_task: Task
 
+var animation_player: AnimationPlayer
+
+
 func _ready() -> void:
+	init_model()
 	init_animations()
 	init_behavior()
-
+	
 func _physics_process(delta: float) -> void:
 	velocity.x = 0
 	velocity.z = 0
@@ -74,6 +77,16 @@ func init_behavior():
 		tasks.append(TakeTask.new(self, storage, randi_range(0, min(5, storage.count))))
 	tasks.append(CheckoutTask.new(self, Game.instance.level.checkout_counters.pick_random()))
 	# TODO: le faire aller à la caisse pour attendre
+
+func init_model():
+	var model: Node3D = models.pick_random().instantiate()
+	model.rotation.y = PI
+	model.scale *= randf_range(3.2,3.8)
+	for child in model.get_children():
+		if child is AnimationPlayer:
+			animation_player = child
+			break
+	add_child(model)
 
 func init_animations():
 	for animation in animations.values():

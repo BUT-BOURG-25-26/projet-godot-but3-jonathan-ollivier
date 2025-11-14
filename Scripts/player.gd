@@ -25,7 +25,7 @@ func _input(event):
 
 	handle_click(event)
 
-func _process(delta):
+func _process(_delta):
 	for button in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT]:
 		if Input.is_mouse_button_pressed(button):
 			var hit = _shoot_raycast(Global.HOLDABLE)
