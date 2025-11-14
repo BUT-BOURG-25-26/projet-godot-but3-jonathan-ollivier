@@ -88,3 +88,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="JoyStick" parent="CanvasLayer" instance=ExtResource("8_2irst")]
+
+[node name="NPCSpawn" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="NPCSpawn" to="." method="_on_npc_spawn_timeout"]

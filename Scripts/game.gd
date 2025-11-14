@@ -16,6 +16,7 @@ func _ready() -> void:
 	level.init()
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	level.add_npc(Vector3(40, 0, -10))
 
 func _process(delta):
 	if Input.is_action_just_pressed("dev"):
@@ -31,3 +32,7 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		elif event.is_action_released("alt"):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _on_npc_spawn_timeout() -> void:
+	level.add_npc(Vector3(40, 0, -10))

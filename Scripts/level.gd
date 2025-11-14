@@ -23,9 +23,6 @@ func init():
 	add_checkout_counter(Vector3(10, 0, 15), false)
 	
 	bake_navigation_mesh()
-	
-	for i in range(4):
-		var npc = add_npc(Vector3(20, 10, -10 + 5*i))
 
 func add_aisle(position: Vector3 = Vector3.ZERO, bake_navmesh: bool = true) -> Aisle:
 	var aisle = Aisle.create()
