@@ -15,13 +15,14 @@ var pitch := 0.0
 var last_hovered = null
 
 func _input(event):
-	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+	if event is InputEventScreenDrag || event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		yaw -= event.relative.x * mouse_sensitivity
 		pitch -= event.relative.y * mouse_sensitivity
 		pitch = clamp(pitch, deg_to_rad(-89), deg_to_rad(89))
 
 		camera.rotation.y = yaw
 		camera.rotation.x = pitch
+	
 
 	handle_click(event)
 
