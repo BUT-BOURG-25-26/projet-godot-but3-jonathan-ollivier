@@ -7,6 +7,7 @@
 script = ExtResource("2_ncaxo")
 name = "Flashlight"
 unit_price = 10.0
+unit_per_box = 60
 model = ExtResource("1_clccc")
 rotation = Vector3(-1.57, 0, 0)
 translate = Vector3(0, 0, 0)

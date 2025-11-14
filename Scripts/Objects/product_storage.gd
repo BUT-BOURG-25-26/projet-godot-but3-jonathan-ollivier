@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 # Public methods
 # --------------------
 
-func _on_area_3d_clicked(player: Player, mouseButton: int) -> void:
+func _on_area_3d_hold(player: Player, mouseButton: int) -> void:
 	if player.in_hands is not Box: 
 		return
 	

@@ -12,11 +12,10 @@ class_name Player
 var yaw := 0.0
 var pitch := 0.0
 
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+var last_hovered = null
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		yaw -= event.relative.x * mouse_sensitivity
 		pitch -= event.relative.y * mouse_sensitivity
 		pitch = clamp(pitch, deg_to_rad(-89), deg_to_rad(89))
@@ -26,11 +25,21 @@ func _input(event):
 
 	handle_click(event)
 
-	if event is InputEventKey and event.is_action_pressed("escape"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE \
-							if (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED) \
-							else Input.MOUSE_MODE_CAPTURED
-
+func _process(delta):
+	for button in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT]:
+		if Input.is_mouse_button_pressed(button):
+			var hit = _shoot_raycast(Global.HOLDABLE)
+			if hit:
+				hit.collider.hold.emit(self, button)
+	
+	var hit = _shoot_raycast(Global.HOVERABLE)
+	if last_hovered && (!hit || last_hovered != hit.collider):
+		last_hovered.unhovered.emit(self)
+	if hit:
+		hit.collider.hovered.emit(self)
+		last_hovered = hit.collider
+	
+				
 func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (camera.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -45,30 +54,13 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-func _shoot_raycast():
-	var space_state = get_world_3d().direct_space_state
-	var mousePos = get_viewport().get_mouse_position()
-	
-	var from = camera.project_ray_origin(mousePos)
-	var to = from + camera.project_ray_normal(mousePos) * REACH
-	var rayCaster = PhysicsRayQueryParameters3D.create(from, to)
-	rayCaster.collide_with_areas = true
-	rayCaster.collision_mask = Global.CLICKABLE | Global.HOLDABLE
-	
-	var result = space_state.intersect_ray(rayCaster)
-	return result
-
 func handle_click(event):
-	if event is InputEventMouseButton:
-		if event.pressed:
-			var hit = _shoot_raycast()
-			if hit:
-				hit.collider.clicked.emit(self, event.button_index)
-			else:
-				if in_hands:
-					clear_hand()
+	if event is InputEventMouseButton && event.pressed:
+		var hit = _shoot_raycast(Global.CLICKABLE)
+		if hit:
+			hit.collider.clicked.emit(self, event.button_index)
 
-func get_in_hand(item):
+func get_in_hand(item) -> void:
 	item.pick(hands)
 	in_hands = item
 					
@@ -76,3 +68,17 @@ func clear_hand():
 	in_hands.drop(global_position + \
 					camera.transform.basis * Vector3.FORWARD * REACH)
 	in_hands = null
+
+
+func _shoot_raycast(mask: int):
+	var space_state = get_world_3d().direct_space_state
+	var mousePos = get_viewport().get_mouse_position()
+	
+	var from = camera.project_ray_origin(mousePos)
+	var to = from + camera.project_ray_normal(mousePos) * REACH
+	var rayCaster = PhysicsRayQueryParameters3D.create(from, to)
+	rayCaster.collide_with_areas = true
+	rayCaster.collision_mask = mask
+	
+	var result = space_state.intersect_ray(rayCaster)
+	return result

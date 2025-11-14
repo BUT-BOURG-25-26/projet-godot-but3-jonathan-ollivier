@@ -1,4 +1,4 @@
-extends ClickableBody
+extends ExtendedBody
 class_name Box
 
 @export var product: Product

@@ -1,17 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://brqqbgm4jdpw1"]
+[gd_scene load_steps=6 format=3 uid="uid://brqqbgm4jdpw1"]
 
 [ext_resource type="Script" uid="uid://bnnu28hbgfge5" path="res://Scripts/Objects/box_storage.gd" id="1_ug8ci"]
-[ext_resource type="Script" uid="uid://dfmuuy21nqtsb" path="res://Scripts/Interfaces/clickable_area.gd" id="2_snkul"]
+[ext_resource type="Script" uid="uid://dfmuuy21nqtsb" path="res://Scripts/Interfaces/extended_area.gd" id="2_snkul"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_13f64"]
 size = Vector3(2.45508, 1.28577, 1.83008)
 
-[node name="BoxStorage" type="Node3D" node_paths=PackedStringArray("front")]
+[sub_resource type="BoxMesh" id="BoxMesh_snkul"]
+size = Vector3(2.45508, 1.28577, 1.83008)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_um6wt"]
+transparency = 1
+albedo_color = Color(0.407843, 0.847059, 0.854902, 0.501961)
+
+[node name="BoxStorage" type="Node3D" node_paths=PackedStringArray("front", "mesh_instance")]
 script = ExtResource("1_ug8ci")
 front = NodePath("front")
+mesh_instance = NodePath("Box/Collision/MeshInstance3D")
 
 [node name="Box" type="Area3D" parent="."]
-collision_layer = 4
+collision_layer = 20
 script = ExtResource("2_snkul")
 metadata/_custom_type_script = "uid://dfmuuy21nqtsb"
 
@@ -20,7 +28,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.641, 0)
 shape = SubResource("BoxShape3D_13f64")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box/Collision"]
+visible = false
+mesh = SubResource("BoxMesh_snkul")
+surface_material_override/0 = SubResource("StandardMaterial3D_um6wt")
+
 [node name="front" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.29311)
 
 [connection signal="clicked" from="Box" to="." method="_on_box_clicked"]
+[connection signal="hovered" from="Box" to="." method="_on_box_hovered"]
+[connection signal="unhovered" from="Box" to="." method="_on_box_unhovered"]

@@ -14,9 +14,20 @@ func _ready() -> void:
 	assert(instance == null) # pr le singleton
 	instance = self
 	level.init()
+	
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _process(delta):
 	if Input.is_action_just_pressed("dev"):
 		shop.visible = !shop.visible
 
-	
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.is_action_pressed("escape"):
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE \
+								if (Input.mouse_mode == Input.MOUSE_MODE_CAPTURED) \
+								else Input.MOUSE_MODE_CAPTURED
+		elif event.is_action_pressed("alt"):
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		elif event.is_action_released("alt"):
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

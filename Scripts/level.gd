@@ -20,7 +20,7 @@ func init():
 	var aisle = add_aisle(Vector3(-8, 0, -5), false)
 	aisle.fill_randomly()
 	
-	add_checkout_counter(Vector3(7, 0, 11), false)
+	add_checkout_counter(Vector3(10, 0, 15), false)
 	
 	bake_navigation_mesh()
 	

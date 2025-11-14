@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://djltg67jr76w8"]
 
 [ext_resource type="Script" uid="uid://ywvf6x5msxt0" path="res://Scripts/Objects/product_storage.gd" id="1_8lfcg"]
-[ext_resource type="Script" uid="uid://dfmuuy21nqtsb" path="res://Scripts/Interfaces/clickable_area.gd" id="2_qcuo0"]
+[ext_resource type="Script" uid="uid://dfmuuy21nqtsb" path="res://Scripts/Interfaces/extended_area.gd" id="2_qcuo0"]
 [ext_resource type="Script" uid="uid://doc54jjojw8yd" path="res://Scripts/Objects/products_collision.gd" id="3_jyawa"]
 [ext_resource type="AudioStream" uid="uid://cdewra32rf08p" path="res://Assets/Sounds/pop.mp3" id="4_qcuo0"]
 
@@ -19,7 +19,7 @@ products_container = NodePath("ProductsContainer")
 front = NodePath("front")
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_layer = 12
+collision_layer = 8
 script = ExtResource("2_qcuo0")
 metadata/_custom_type_script = "uid://dfmuuy21nqtsb"
 
@@ -38,4 +38,5 @@ volume_db = -20.0
 [node name="front" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
-[connection signal="clicked" from="Area3D" to="." method="_on_area_3d_clicked"]
+[connection signal="hold" from="Area3D" to="." method="_on_area_3d_hold"]
+[connection signal="hovered" from="Area3D" to="." method="_on_area_3d_hovered"]

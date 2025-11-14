@@ -1,4 +1,4 @@
-extends ClickableCharacter
+extends ExtendedCharacter
 class_name NPC
 
 static var scene: PackedScene = preload("res://Scenes/Entities/NPC.tscn")
