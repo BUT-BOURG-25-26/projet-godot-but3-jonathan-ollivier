@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://doxwiqilr4owf"]
 
-[ext_resource type="Script" uid="uid://dxdfu8pn2kxqc" path="res://Scripts/mixed_product_storage.gd" id="1_dqqog"]
-[ext_resource type="Script" uid="uid://doc54jjojw8yd" path="res://Scripts/products_collision.gd" id="3_7ppc4"]
+[ext_resource type="Script" uid="uid://dxdfu8pn2kxqc" path="res://Scripts/Objects/mixed_product_storage.gd" id="1_dqqog"]
+[ext_resource type="Script" uid="uid://doc54jjojw8yd" path="res://Scripts/Objects/products_collision.gd" id="3_7ppc4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_baryh"]
 transparency = 1

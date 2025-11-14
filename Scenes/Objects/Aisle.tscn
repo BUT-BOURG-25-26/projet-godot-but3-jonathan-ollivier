@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxkvd1pav6i0w"]
 
 [ext_resource type="PackedScene" uid="uid://dgr27hj2k1mm3" path="res://Assets/Models/Furnitures/aisle.glb" id="1_7e5i7"]
-[ext_resource type="Script" uid="uid://dcgosafu6qun5" path="res://Scripts/aisle.gd" id="1_f3t1a"]
+[ext_resource type="Script" uid="uid://dcgosafu6qun5" path="res://Scripts/Objects/aisle.gd" id="1_f3t1a"]
 [ext_resource type="PackedScene" uid="uid://djltg67jr76w8" path="res://Scenes/Objects/ProductStorage.tscn" id="2_l3vab"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dwqt1"]

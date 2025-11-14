@@ -7,12 +7,14 @@
 radius = 1.26947
 height = 7.66614
 
-[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("cooldown", "agent", "animation_player")]
+[node name="NPC" type="CharacterBody3D" node_paths=PackedStringArray("cooldown", "agent", "animation_player", "complaint_label", "complaint_timer")]
 collision_layer = 8
 script = ExtResource("1_p23k1")
 cooldown = NodePath("Cooldown")
 agent = NodePath("NavigationAgent3D")
 animation_player = NodePath("Model/AnimationPlayer")
+complaint_label = NodePath("Complaint")
+complaint_timer = NodePath("Complaint/ComplaintTimer")
 
 [node name="Model" parent="." instance=ExtResource("1_3twlq")]
 transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 0, 0, 0)
@@ -50,10 +52,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.38336, 0)
 shape = SubResource("CapsuleShape3D_p23k1")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-target_desired_distance = 3.0
+target_desired_distance = 2.0
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.001
 one_shot = true
+
+[node name="Complaint" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.85693, 0)
+billboard = 2
+font_size = 100
+outline_size = 16
+vertical_alignment = 2
+
+[node name="ComplaintTimer" type="Timer" parent="Complaint"]
+one_shot = true
+
+[connection signal="timeout" from="Complaint/ComplaintTimer" to="." method="_on_complaint_timer_timeout"]
 
 [editable path="Model"]

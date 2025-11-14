@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bquooy66p2kgr"]
+
+[ext_resource type="Script" uid="uid://da7eu08b6gi6r" path="res://Scripts/UI/money_count.gd" id="1_e73ny"]
+
+[node name="MoneyCount" type="Control" node_paths=PackedStringArray("label")]
+layout_direction = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_e73ny")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 5.0
+offset_top = -5.0
+offset_right = 255.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 40
+text = "1000.00$"

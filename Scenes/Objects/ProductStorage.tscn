@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://djltg67jr76w8"]
 
-[ext_resource type="Script" uid="uid://ywvf6x5msxt0" path="res://Scripts/product_storage.gd" id="1_8lfcg"]
-[ext_resource type="Script" uid="uid://doc54jjojw8yd" path="res://Scripts/products_collision.gd" id="3_jyawa"]
+[ext_resource type="Script" uid="uid://ywvf6x5msxt0" path="res://Scripts/Objects/product_storage.gd" id="1_8lfcg"]
+[ext_resource type="Script" uid="uid://doc54jjojw8yd" path="res://Scripts/Objects/products_collision.gd" id="3_jyawa"]
 [ext_resource type="AudioStream" uid="uid://cdewra32rf08p" path="res://Assets/Sounds/pop.mp3" id="4_qcuo0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_baryh"]

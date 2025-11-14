@@ -1,18 +1,20 @@
 [gd_scene load_steps=8 format=3 uid="uid://crc2w6r6oe2fx"]
 
-[ext_resource type="Script" uid="uid://bfqowfvf0y2po" path="res://Scripts/checkout_counter.gd" id="1_tv5kb"]
+[ext_resource type="Script" uid="uid://bfqowfvf0y2po" path="res://Scripts/Objects/checkout_counter.gd" id="1_tv5kb"]
 [ext_resource type="PackedScene" uid="uid://cs4ec2g6ndq33" path="res://Assets/Models/Furnitures/checkount_counter.glb" id="2_lujsa"]
 [ext_resource type="PackedScene" uid="uid://doxwiqilr4owf" path="res://Scenes/Objects/MixedProductStorage.tscn" id="2_sc7cp"]
-[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/product.gd" id="3_rw25l"]
+[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/Objects/product.gd" id="3_rw25l"]
 [ext_resource type="Resource" uid="uid://dvqby7m3fd1mq" path="res://Products/Cereals.tres" id="4_wbs6f"]
 [ext_resource type="Resource" uid="uid://c7idfdkiuc6a4" path="res://Products/Flashlight.tres" id="5_lujsa"]
 [ext_resource type="AudioStream" uid="uid://kkyi11ilufdv" path="res://Assets/Sounds/bip.wav" id="7_lujsa"]
 
-[node name="CheckoutCounter" type="Node3D" node_paths=PackedStringArray("productContainer", "sound", "price_label")]
+[node name="CheckoutCounter" type="Node3D" node_paths=PackedStringArray("productContainer", "sound", "price_label", "queue_start", "queue2")]
 script = ExtResource("1_tv5kb")
 productContainer = NodePath("Products")
 sound = NodePath("bip")
 price_label = NodePath("Label3D")
+queue_start = NodePath("QueueStart")
+queue2 = NodePath("Queue2")
 
 [node name="Products" parent="." instance=ExtResource("2_sc7cp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44958, 5.36544, 0.020874)
@@ -36,5 +38,11 @@ line_spacing = 200.0
 
 [node name="checkount_counter" parent="." instance=ExtResource("2_lujsa")]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+
+[node name="QueueStart" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12666, 0, -4.47112)
+
+[node name="Queue2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0252, 0, -4.47112)
 
 [connection signal="clicked" from="Products" to="." method="_on_products_clicked"]

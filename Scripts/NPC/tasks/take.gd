@@ -16,8 +16,16 @@ func loop():
 	if !npc.cooldown.is_stopped():
 		return
 	
-	if count > 0 and product_storage.count > 0:
+	if count > 0:
+		if product_storage.count == 0:
+			npc.complain("Plus de " + product_storage.product.name + " en stock !")
+			count = 0
 		product_storage.remove_one()
-		npc.animate(npc.animations.interact)
 		npc.products.append(product_storage.product)
+		
+		var look_at_pos = product_storage.global_position
+		look_at_pos.y = 0
+		npc.look_at(look_at_pos)
+		npc.animate(npc.animations.interact)
+		
 		npc.cooldown.start(1)

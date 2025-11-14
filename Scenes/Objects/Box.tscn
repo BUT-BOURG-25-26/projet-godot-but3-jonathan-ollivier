@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://kd5d27hpp8qc"]
 
 [ext_resource type="PackedScene" uid="uid://cb0ut7n0reaop" path="res://Assets/Models/Misc/box.glb" id="1_g0g3h"]
-[ext_resource type="Script" uid="uid://by7lddgiq35s3" path="res://Scripts/box.gd" id="1_rueyf"]
+[ext_resource type="Script" uid="uid://by7lddgiq35s3" path="res://Scripts/Objects/box.gd" id="1_rueyf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ohx7e"]
 

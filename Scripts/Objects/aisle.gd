@@ -12,5 +12,5 @@ func fill_randomly() -> void:
 	for product_storage: ProductStorage in products_storages:
 		var product = Global.products.pick_random()
 		product_storage.set_product(product)
-		product_storage.set_count(randi_range(0, product_storage.max_count / 3 - 1))
+		product_storage.set_count(randi_range(0, 10))
 		

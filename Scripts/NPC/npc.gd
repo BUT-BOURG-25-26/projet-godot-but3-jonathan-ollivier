@@ -22,6 +22,8 @@ var animations = {
 @export var agent: NavigationAgent3D
 @export var SPEED = 10
 @export var animation_player: AnimationPlayer
+@export var complaint_label: Label3D
+@export var complaint_timer: Timer
 
 var products: Array[Product] = []
 var tasks: Array[Task] = []
@@ -48,10 +50,11 @@ func next_task():
 func init_behavior():
 	var product_count = randi_range(1, 3)
 	for i in range(product_count):
-		var aisle = Game.game.aisles.pick_random()
+		var aisle = Game.instance.level.aisles.pick_random()
 		var storage = aisle.products_storages.pick_random()
 		tasks.append(GotoTask.new(self, storage.front.global_position))
 		tasks.append(TakeTask.new(self, storage, randi_range(0, min(5, storage.count))))
+	tasks.append(CheckoutTask.new(self, Game.instance.level.checkout_counters.pick_random()))
 	# TODO: le faire aller à la caisse pour attendre
 
 func init_animations():
@@ -70,6 +73,14 @@ func handle_tasks():
 			next_task()
 	elif !tasks.is_empty():
 		next_task()
+
+func complain(text: String, duration: float = 5.0):
+	complaint_label.text = text
+	complaint_timer.start(duration)	
+
+func _on_complaint_timer_timeout() -> void:
+	complaint_label.text = ""
+
 
 
 
