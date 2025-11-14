@@ -1,5 +1,5 @@
 extends Task
-class_name TakeTask
+class_name CheckoutTask
 
 var product_storage: ProductStorage
 var count: int
