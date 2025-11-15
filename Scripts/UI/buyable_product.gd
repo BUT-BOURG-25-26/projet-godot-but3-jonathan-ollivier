@@ -3,6 +3,8 @@ class_name BuyableProduct
 
 static var scene: PackedScene = preload("res://UI/Shop/BuyableProduct.tscn")
 
+signal add(product: Product)
+
 var product: Product
 
 @export var image: Panel
@@ -24,3 +26,8 @@ static func create(product: Product) -> BuyableProduct:
 	instance.image.add_theme_stylebox_override("panel", stylebox)
 	
 	return instance
+
+
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
+		add.emit(product)

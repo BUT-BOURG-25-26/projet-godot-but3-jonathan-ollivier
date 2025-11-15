@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccx0ofmgxhjv0"]
+
+[ext_resource type="Script" uid="uid://0fqmvh55x6n0" path="res://Scripts/UI/product_in_cart.gd" id="1_lhm5l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erwom"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="ProductInCart" type="Control" node_paths=PackedStringArray("image", "name_label", "quantity_label", "price_label")]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_lhm5l")
+image = NodePath("MarginContainer/Panel/MarginContainer/HBoxContainer/AspectRatioContainer/Image")
+name_label = NodePath("MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/Name")
+quantity_label = NodePath("MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Quantity")
+price_label = NodePath("MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/Price")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 265.0
+offset_bottom = 110.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_erwom")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.8
+alignment_horizontal = 0
+alignment_vertical = 0
+
+[node name="Image" type="Panel" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/AspectRatioContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+
+[node name="Name" type="Label" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Name"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Quantity" type="Label" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "x15"
+horizontal_alignment = 1
+
+[node name="Price" type="Label" parent="MarginContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.666667, 0, 0, 1)
+text = "975$"
+horizontal_alignment = 1

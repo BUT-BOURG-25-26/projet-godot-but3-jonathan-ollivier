@@ -18,7 +18,6 @@ func refresh() -> void:
 	var z = 0
 	var max_z = 0
 	for p in products:
-		p.load()
 		var product = p.create()
 		if x > size.x:
 			x = 0
@@ -40,7 +39,6 @@ func remove_last_item():
 	return products.pop_back()
 
 func add_item(p: Product):
-	p.load()
 	products.push_back(p)
 	products_container.add_child(p.create())
 	refresh()

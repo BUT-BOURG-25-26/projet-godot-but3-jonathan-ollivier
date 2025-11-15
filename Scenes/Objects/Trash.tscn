@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn6dn7nuklova"]
+
+[ext_resource type="Script" uid="uid://bvmruhtwf68xs" path="res://Scripts/Objects/trash.gd" id="1_82gg4"]
+[ext_resource type="PackedScene" uid="uid://beigw8ljer8ue" path="res://Assets/Models/Furnitures/trash.glb" id="1_smko0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_82gg4"]
+size = Vector3(7.74045, 5.88234, 4.12299)
+
+[node name="Trash" type="RigidBody3D"]
+collision_layer = 5
+script = ExtResource("1_82gg4")
+metadata/_custom_type_script = "uid://b4koncaet8puk"
+
+[node name="Model" parent="." instance=ExtResource("1_smko0")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00511146, 2.96962, -0.00172615)
+shape = SubResource("BoxShape3D_82gg4")
+
+[connection signal="clicked" from="." to="." method="_on_clicked"]

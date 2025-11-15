@@ -22,10 +22,11 @@ var size: Vector3
 var image_texture: ImageTexture
 
 func load(scene: SceneTree = null) -> void:
-	calculate_bounds()
-	create_image(scene)
+	assert(image_texture == null)
+	_calculate_bounds()
+	_create_image(scene)
 
-func calculate_bounds():
+func _calculate_bounds():
 	var model_instance = model.instantiate()
 	
 	var mesh_instance: MeshInstance3D
@@ -42,7 +43,7 @@ func calculate_bounds():
 		depth = aabb.size.x + gap
 		size = Vector3(width, height, depth)
 
-func create_image(scene: SceneTree):
+func _create_image(scene: SceneTree):
 	if !scene:
 		return
 	

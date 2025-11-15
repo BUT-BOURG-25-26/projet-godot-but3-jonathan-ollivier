@@ -73,6 +73,9 @@ skeleton = NodePath("../..")
 [node name="Player" parent="Level" instance=ExtResource("3_7lihs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
 
+[node name="BoxSpawnPoint" type="Node3D" parent="Level"]
+transform = Transform3D(0.999681, 0, -0.0252697, 0, 1, 0, 0.0252697, 0, 0.999681, 41.6396, 9.54946, 0)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MoneyCount" parent="CanvasLayer" instance=ExtResource("5_b2bpf")]
@@ -82,8 +85,9 @@ player = NodePath("../../Level/Player")
 
 [node name="JoyStick" parent="CanvasLayer" instance=ExtResource("8_2irst")]
 
-[node name="Shop" parent="CanvasLayer" instance=ExtResource("7_fgofq")]
+[node name="Shop" parent="CanvasLayer" node_paths=PackedStringArray("box_spawn_point") instance=ExtResource("7_fgofq")]
 visible = false
+box_spawn_point = NodePath("../../Level/BoxSpawnPoint")
 
 [node name="NPCSpawn" type="Timer" parent="."]
 wait_time = 10.0

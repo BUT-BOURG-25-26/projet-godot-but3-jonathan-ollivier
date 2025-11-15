@@ -19,7 +19,7 @@ func _on_box_clicked(player: Player, mouseButton: int) -> void:
 			self.box = null
 
 func _on_box_hovered(player: Player) -> void:
-	mesh_instance.visible = player.in_hands is Box
+	mesh_instance.visible = player.in_hands is Box && box == null
 
 
 func _on_box_unhovered(player: Player) -> void:

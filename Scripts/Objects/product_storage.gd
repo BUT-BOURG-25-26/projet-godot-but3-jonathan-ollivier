@@ -64,7 +64,6 @@ func set_product(p: Product):
 	if !p:
 		return
 	
-	p.load()
 	product = p
 	calc_grid()
 	count = clamp(count, 0, max_count)
