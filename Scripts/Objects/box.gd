@@ -1,6 +1,8 @@
 extends ExtendedBody
 class_name Box
 
+static var scene: PackedScene = preload("res://Scenes/Objects/Box.tscn")
+
 @export var product: Product
 @export var img_generator: Node3D
 @export var viewport: SubViewport
@@ -8,8 +10,9 @@ class_name Box
 @export var collider: CollisionShape3D
 @export var model: Node3D
 @export var product_count: int
+@export var labels: Array[Label3D] = []
 
-static var scene: PackedScene = preload("res://Scenes/Objects/Box.tscn")
+var label_value: int = 0
 
 func _ready() -> void:
 	if !product: return
@@ -17,7 +20,13 @@ func _ready() -> void:
 	var mat = StandardMaterial3D.new()
 	mat.albedo_texture = product.image_texture
 	image_container.material = mat
-	
+
+func _process(_delta) -> void:
+	if product_count != label_value:
+		label_value = product_count
+		for l in labels:
+			l.text = str(label_value)
+
 func pick(node: Node3D):
 	model.get_parent().remove_child(model)
 	node.add_child(model)

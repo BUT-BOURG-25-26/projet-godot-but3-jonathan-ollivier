@@ -84,6 +84,6 @@ func _create_image(scene: SceneTree):
 
 func create():
 	var instance: Node3D = model.instantiate()
-	instance.transform = Transform3D(Basis.from_euler(rotation), Vector3.ZERO)
-	instance.transform = instance.transform.scaled(scale)
+	instance.transform = Transform3D(Basis.from_euler(rotation).scaled(scale), Vector3.ZERO)
+	instance.transform.origin = translate
 	return instance

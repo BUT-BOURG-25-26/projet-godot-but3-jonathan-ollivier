@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyyj6fe42fyhj"]
+
+[ext_resource type="PackedScene" uid="uid://cpwagsp2oblra" path="res://Assets/Models/Furnitures/market_fridge.glb" id="1_p4sea"]
+[ext_resource type="PackedScene" uid="uid://djltg67jr76w8" path="res://Scenes/Objects/ProductStorage.tscn" id="2_qf18k"]
+
+[node name="Fridge" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_p4sea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.615358, 0)
+
+[node name="ProductStorage" parent="." instance=ExtResource("2_qf18k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15806, 3.5143, 0.0124254)
+size = Vector3(1.52344, 1.19482, 3.14941)
+
+[node name="ProductStorage2" parent="." instance=ExtResource("2_qf18k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15806, 4.7854, 0.0124254)
+size = Vector3(1.52344, 1.19482, 3.14941)
+
+[node name="ProductStorage3" parent="." instance=ExtResource("2_qf18k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15806, 6.16747, 0.0124254)
+size = Vector3(1.52344, 1.19482, 3.14941)
+
+[node name="ProductStorage4" parent="." instance=ExtResource("2_qf18k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15806, 2.23463, 0.0124254)
+size = Vector3(1.52344, 1.19482, 3.14941)

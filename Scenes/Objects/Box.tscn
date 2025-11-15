@@ -8,15 +8,14 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ohx7e"]
 size = Vector3(2.46973, 1.28714, 1.83398)
 
-[node name="Box" type="RigidBody3D" node_paths=PackedStringArray("img_generator", "viewport", "image_container", "model")]
+[node name="Box" type="RigidBody3D" node_paths=PackedStringArray("image_container", "model", "labels")]
 collision_layer = 6
 collision_mask = 3
 mass = 0.001
 script = ExtResource("1_rueyf")
-img_generator = NodePath("")
-viewport = NodePath("")
 image_container = NodePath("Model/ImageContainer")
 model = NodePath("Model")
+labels = [NodePath("Model/Count"), NodePath("Model/Count2")]
 metadata/_custom_type_script = "uid://b4koncaet8puk"
 
 [node name="Model" parent="." instance=ExtResource("1_g0g3h")]
@@ -26,6 +25,20 @@ transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509, 0)
 size = Vector3(0.4, 0.001, 0.4)
 material = SubResource("StandardMaterial3D_ohx7e")
+
+[node name="Count" type="Label3D" parent="Model"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.270514, 0.146757, -0.37553)
+modulate = Color(0, 0, 0, 1)
+text = "300"
+font_size = 25
+outline_size = 0
+
+[node name="Count2" type="Label3D" parent="Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270514, 0.146757, 0.36215)
+modulate = Color(0, 0, 0, 1)
+text = "300"
+font_size = 25
+outline_size = 0
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00134277, 0.638748, 0.00674438)

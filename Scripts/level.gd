@@ -6,7 +6,7 @@ var racks: Array[Rack] = []
 var checkout_counters: Array[CheckoutCounter] = []
 var npcs: Array[NPC] = []
 
-func init():	
+func init():
 	var rack = add_rack(Vector3(-8, 0, -22), false)
 	
 	var aisle = add_aisle(Vector3(-8, 0, -5), false)

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d0i1nryirm76l"
-path="res://.godot/imported/can.glb-5dca24e68d4ed1c75efab0bb24a9f8f3.scn"
+uid="uid://cpwagsp2oblra"
+path="res://.godot/imported/market_fridge.glb-83343145b210936e99d37176ad568944.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Groceries/can.glb"
-dest_files=["res://.godot/imported/can.glb-5dca24e68d4ed1c75efab0bb24a9f8f3.scn"]
+source_file="res://Assets/Models/Furnitures/market_fridge.glb"
+dest_files=["res://.godot/imported/market_fridge.glb-83343145b210936e99d37176ad568944.scn"]
 
 [params]
 
