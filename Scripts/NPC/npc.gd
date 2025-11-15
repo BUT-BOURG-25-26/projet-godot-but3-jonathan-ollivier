@@ -4,16 +4,16 @@ class_name NPC
 static var scene: PackedScene = preload("res://Scenes/Entities/NPC.tscn")
 
 var slurs = [
-	"Ton cerveau doit avoir le mode avion activé.",
-	"T’es le genre à perdre contre un tutoriel.",
-	"Je suis sûr que tu révises avec des coloriages.",
-	"Ton Wi-Fi est plus stable que tes arguments.",
-	"T’as la logique d’un grille-pain en grève.",
-	"On dirait que tu fais des calculs avec des cailloux.",
-	"Ton charisme est en mode économie d’énergie.",
-	"Même Google ne veut pas te répondre.",
-	"T’as la répartie d’un poisson rouge en réunion.",
-	"On dirait que tu sauvegardes tes idées sur une disquette."
+	"Your brain must be stuck in airplane mode.",
+	"You're the type who loses to a tutorial.",
+	"I'm pretty sure you study with coloring books.",
+	"Your Wi-Fi is more stable than your arguments.",
+	"You've got the logic of a toaster on strike.",
+	"Looks like you do math using pebbles.",
+	"Your charisma is running on power-saving mode.",
+	"Even Google refuses to answer you.",
+	"You’ve got the comeback skills of a goldfish in a meeting.",
+	"Feels like you store your ideas on a floppy disk."
 ]
 
 var animations = {

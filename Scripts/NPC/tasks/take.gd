@@ -15,7 +15,7 @@ func finished():
 func loop():
 	if count > 0:
 		if product_storage.count == 0:
-			npc.complain("Plus de " + product_storage.product.name + " en stock !")
+			npc.complain("No more " + product_storage.product.name + " in stock !")
 			count = 0
 		product_storage.remove_one()
 		npc.products.append(product_storage.product)
