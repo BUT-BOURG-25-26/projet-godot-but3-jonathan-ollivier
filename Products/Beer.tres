@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Product" load_steps=3 format=3 uid="uid://tw487hwdpc7x"]
+
+[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/Objects/product.gd" id="1_h8r3p"]
+[ext_resource type="PackedScene" uid="uid://dbftitfhi83c4" path="res://Assets/Models/Groceries/bottle.glb" id="1_wb0n2"]
+
+[resource]
+script = ExtResource("1_h8r3p")
+name = "Beer"
+unit_price = 5.0
+unit_per_box = 24
+model = ExtResource("1_wb0n2")
+translate = Vector3(0, -0.45, 0)
+rotation = Vector3(0, 0, 0)
+scale = Vector3(0.75, 0.75, 0.75)
+gap = 0.4
+metadata/_custom_type_script = "uid://f0fxh6ic88e4"

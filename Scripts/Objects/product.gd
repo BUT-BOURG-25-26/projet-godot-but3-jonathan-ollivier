@@ -8,8 +8,9 @@ class_name Product
 
 @export_subgroup("Model")
 @export var model: PackedScene
-@export var rotation: Vector3 = Vector3.ZERO
 @export var translate: Vector3 = Vector3.ZERO
+@export var rotation: Vector3 = Vector3.ZERO
+@export var scale: Vector3 = Vector3.ONE
 
 @export_subgroup("Aisle")
 @export var gap: float = 0.05
@@ -30,13 +31,15 @@ func _calculate_bounds():
 	var model_instance = model.instantiate()
 	
 	var mesh_instance: MeshInstance3D
-	for child in model_instance.get_children():
-		if child is MeshInstance3D:
-			mesh_instance = child
-			break
-
+	var mesh := model_instance.find_children("*", "MeshInstance3D", true)
+	if mesh.size() > 0:
+		mesh_instance = mesh[0]
+		
 	if mesh_instance:
 		var aabb: AABB =  mesh_instance.get_aabb() * Transform3D(Basis.from_euler(rotation), Vector3.ZERO)
+		aabb.size.x *= scale.x
+		aabb.size.y *= scale.y
+		aabb.size.z *= scale.z
 		
 		width = aabb.size.z + gap
 		height = aabb.size.y
@@ -82,4 +85,5 @@ func _create_image(scene: SceneTree):
 func create():
 	var instance: Node3D = model.instantiate()
 	instance.transform = Transform3D(Basis.from_euler(rotation), Vector3.ZERO)
+	instance.transform = instance.transform.scaled(scale)
 	return instance

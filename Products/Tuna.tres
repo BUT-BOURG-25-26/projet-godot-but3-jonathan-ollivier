@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Product" load_steps=3 format=3 uid="uid://c4v58pgu06uv4"]
+
+[ext_resource type="PackedScene" uid="uid://dksx4ssl7acbh" path="res://Assets/Models/Groceries/tincan.glb" id="1_3dlhe"]
+[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/Objects/product.gd" id="1_s0joc"]
+
+[resource]
+script = ExtResource("1_s0joc")
+name = "Tuna"
+unit_price = 3.0
+unit_per_box = 60
+model = ExtResource("1_3dlhe")
+translate = Vector3(0, 0, 0)
+rotation = Vector3(0, 0, 0)
+scale = Vector3(0.25, 0.25, 0.25)
+gap = 0.05
+metadata/_custom_type_script = "uid://f0fxh6ic88e4"
