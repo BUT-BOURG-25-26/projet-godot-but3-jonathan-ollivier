@@ -21,5 +21,6 @@ offset_top = -35.0
 offset_right = 34.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_mode = 0
 mouse_filter = 1
 text = "Shop"
