@@ -11,7 +11,7 @@ size = Vector3(3.76563, 6.78641, 20.0878)
 script = ExtResource("1_f3t1a")
 products_storages = [NodePath("ProductsStorages/ProductsStorage1"), NodePath("ProductsStorages/ProductsStorage2"), NodePath("ProductsStorages/ProductsStorage3"), NodePath("ProductsStorages/ProductsStorage4")]
 
-[node name="model" parent="." instance=ExtResource("1_7e5i7")]
+[node name="Model" parent="." instance=ExtResource("1_7e5i7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97277, 0)
 
 [node name="ProductsStorages" type="Node3D" parent="."]
@@ -35,3 +35,5 @@ size = Vector3(1.20618, 2.43542, 18.4404)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8932, 0.0662231)
 shape = SubResource("BoxShape3D_dwqt1")
+
+[editable path="Model"]

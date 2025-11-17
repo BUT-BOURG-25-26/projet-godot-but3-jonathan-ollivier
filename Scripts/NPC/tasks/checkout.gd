@@ -29,12 +29,10 @@ func finished():
 
 func loop():
 	var cur_lane_pos = checkout_counter.customer_position(npc)
-	print(cur_lane_pos, " ", lane_pos)
 	if lane_pos != cur_lane_pos:
 		lane_pos = cur_lane_pos
 		var pos = checkout_counter.queue_position(lane_pos)
 		npc.agent.target_position = pos
-		print(pos)
 	
 	if !npc.agent.is_target_reached():
 		pathfind()

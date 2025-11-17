@@ -2,6 +2,7 @@ extends Control
 class_name Shop
 
 @export var product_container: FlowContainer
+@export var furniture_container: FlowContainer
 @export var cart_container: VBoxContainer
 @export var box_spawn_point: Node3D
 @export var joystick: Control
@@ -14,6 +15,12 @@ func _ready() -> void:
 		var buyable = BuyableProduct.create(prod)
 		buyable.add.connect(add_product)
 		product_container.add_child(buyable)
+	
+	for furn in Global.furnitures:
+		var buyable = BuyableFurniture.create(furn)
+		buyable.add.connect(add_furniture)
+		furniture_container.add_child(buyable)
+		
 
 func open():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -38,6 +45,9 @@ func add_product(product: Product):
 			prod.add_one()
 			return
 	cart_container.add_child(ProductInCart.create(product))
+
+func add_furniture(furniture: Furniture):
+	pass
 
 func total_price():
 	var total = 0

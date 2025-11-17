@@ -12,7 +12,7 @@ script = ExtResource("1_o86g2")
 box_storages = [NodePath("BoxStorage1"), NodePath("BoxStorage2"), NodePath("BoxStorage3"), NodePath("BoxStorage4"), NodePath("BoxStorage5"), NodePath("BoxStorage6"), NodePath("BoxStorage7"), NodePath("BoxStorage8"), NodePath("BoxStorage9"), NodePath("BoxStorage10"), NodePath("BoxStorage11"), NodePath("BoxStorage12")]
 metadata/_custom_type_script = "uid://b4koncaet8puk"
 
-[node name="rack" parent="." instance=ExtResource("1_6xbog")]
+[node name="Model" parent="." instance=ExtResource("1_6xbog")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="BoxStorage1" parent="." instance=ExtResource("2_5mguh")]
