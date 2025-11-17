@@ -10,7 +10,7 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="Shop" type="Control" node_paths=PackedStringArray("product_container", "furniture_container", "cart_container")]
+[node name="Shop" type="Control" node_paths=PackedStringArray("product_container", "furniture_container", "cart_container", "shop_name_textedit")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,8 +20,9 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_7ehp3")
 product_container = NodePath("MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Products/Products/ColorRect/ScrollContainer/MarginContainer/ProductContainer")
-furniture_container = NodePath("MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures/Products/ColorRect/ScrollContainer/MarginContainer/FurnitureContainer")
+furniture_container = NodePath("MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures/Furnitures/ColorRect/ScrollContainer/MarginContainer/FurnitureContainer")
 cart_container = NodePath("MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Products/Cart/ColorRect/VBoxContainer/ScrollContainer/VBoxContainer")
+shop_name_textedit = NodePath("MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer/ShopName/TextEdit")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -77,11 +78,80 @@ layout_mode = 2
 size_flags_horizontal = 3
 current_tab = 0
 
-[node name="Products" type="HBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer"]
+[node name="Global" type="HBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Global" type="MarginContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.5
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="Panel" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nciox")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-metadata/_tab_index = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Open" type="HBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer/Open"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Open"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer/Open"]
+layout_mode = 2
+button_pressed = true
+
+[node name="ShopName" type="HBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer/ShopName"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Shop name"
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer/ShopName"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+
+[node name="Products" type="HBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_tab_index = 1
 
 [node name="Products" type="MarginContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Products"]
 layout_mode = 2
@@ -161,9 +231,9 @@ text = "Buy"
 [node name="Furnitures" type="HBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 2
 
-[node name="Products" type="MarginContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures"]
+[node name="Furnitures" type="MarginContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 7.5
@@ -172,11 +242,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ColorRect" type="Panel" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures/Products"]
+[node name="ColorRect" type="Panel" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures/Furnitures"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nciox")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures/Products/ColorRect"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures/Furnitures/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -184,7 +254,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures/Products/ColorRect/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures/Furnitures/ColorRect/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -193,9 +263,11 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="FurnitureContainer" type="FlowContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures/Products/ColorRect/ScrollContainer/MarginContainer"]
+[node name="FurnitureContainer" type="FlowContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Furnitures/Furnitures/ColorRect/ScrollContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 
+[connection signal="toggled" from="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer/Open/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="text_changed" from="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer/ShopName/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Products/Cart/ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]

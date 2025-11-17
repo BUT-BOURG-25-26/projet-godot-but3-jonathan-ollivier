@@ -7,8 +7,10 @@ static var instance: Game
 @export var level: Level
 @export var shop: Shop
 @export var npc_spawn_area: CSGBox3D
+@export var shop_name_label: Label3D
 
-var money: Observable = Observable.new(1000)
+var open := Observable.new(false)
+var money := Observable.new(1000)
 
 func _init() -> void:
 	assert(instance == null) # pr le singleton
@@ -46,4 +48,6 @@ func random_npc_spawn_location():
 	)
 
 func _on_npc_spawn_timeout() -> void:
+	if !open.get_value():
+		return
 	level.add_npc(random_npc_spawn_location())

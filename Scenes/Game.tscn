@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bisacees2rd6b"]
+[gd_scene load_steps=31 format=3 uid="uid://bisacees2rd6b"]
 
 [ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/game.gd" id="1_kldst"]
 [ext_resource type="Script" uid="uid://dbsvbkmx1ds3h" path="res://Scripts/level.gd" id="2_7lihs"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cjdifo2set12q" path="res://Assets/Materials/ground.jpg" id="16_4q8tf"]
 [ext_resource type="PackedScene" uid="uid://c8f34hio7xd3r" path="res://Assets/Models/Terrain/Shop.glb" id="16_alh3a"]
 [ext_resource type="PackedScene" uid="uid://dgyfq0q2kjka3" path="res://UI/Crosshair.tscn" id="17_4q8tf"]
+[ext_resource type="PackedScene" uid="uid://bkgvbpkj5bypy" path="res://UI/ShopOpen.tscn" id="18_x3xnh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxria"]
 sky_top_color = Color(0.384314, 0.756863, 0.898039, 1)
@@ -65,12 +66,13 @@ size = Vector3(677.951, 136.399, 97.4667)
 albedo_texture = ExtResource("16_4q8tf")
 uv1_scale = Vector3(10, 10, 10)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "level", "shop", "npc_spawn_area")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "level", "shop", "npc_spawn_area", "shop_name_label")]
 script = ExtResource("1_kldst")
 player = NodePath("Level/Player")
 level = NodePath("Level/PathfindingRegion")
 shop = NodePath("CanvasLayer/Shop")
 npc_spawn_area = NodePath("Level/NPCSpawnZone")
+shop_name_label = NodePath("Level/Terrain/Shop/ShopName")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qxria")
@@ -125,6 +127,20 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 19.728
 
 [node name="Terrain" type="Node3D" parent="Level"]
 
+[node name="Shop" parent="Level/Terrain" instance=ExtResource("16_alh3a")]
+transform = Transform3D(100, 0, 0, 0, 50, 0, 0, 0, 100, 0, 0, 0)
+
+[node name="Floor" type="CSGBox3D" parent="Level/Terrain/Shop"]
+transform = Transform3D(0.01, 0, 0, 0, 0.02, 0, 0, 0, 0.01, 0.000741425, 0.000766894, -0.000489349)
+material_override = SubResource("StandardMaterial3D_x3xnh")
+size = Vector3(119.092, 0.001, 119.994)
+
+[node name="ShopName" type="Label3D" parent="Level/Terrain/Shop"]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 0.351664, -0.622999)
+text = "SUPERMARKET"
+font_size = 36
+outline_size = 0
+
 [node name="Road" parent="Level/Terrain" instance=ExtResource("10_71axn")]
 transform = Transform3D(1000, 0, 0, 0, 100, 0, 0, 0, 150, 0, -1.00322, -113.708)
 
@@ -145,14 +161,6 @@ transform = Transform3D(-100, 0, -1.50996e-05, 0, 100, 0, 1.50996e-05, 0, -100, 
 
 [node name="Archway" parent="Level/Terrain" instance=ExtResource("15_acvyw")]
 transform = Transform3D(19.6658, 0, 45.9702, 0, 50, 0, -45.9702, 0, 19.6658, -3232.03, 361.859, -971.639)
-
-[node name="Shop" parent="Level/Terrain" instance=ExtResource("16_alh3a")]
-transform = Transform3D(100, 0, 0, 0, 50, 0, 0, 0, 100, 0, 0, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Level/Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0741425, 0.0383447, -0.0489349)
-material_override = SubResource("StandardMaterial3D_x3xnh")
-size = Vector3(119.092, 0.001, 119.994)
 
 [node name="Player" parent="Level" instance=ExtResource("3_7lihs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
@@ -184,6 +192,8 @@ player = NodePath("../../Level/Player")
 mouse_filter = 2
 
 [node name="Crosshair" parent="CanvasLayer" instance=ExtResource("17_4q8tf")]
+
+[node name="ShopOpen" parent="CanvasLayer" instance=ExtResource("18_x3xnh")]
 
 [node name="NPCSpawn" type="Timer" parent="."]
 wait_time = 10.0

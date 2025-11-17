@@ -6,6 +6,7 @@ class_name Shop
 @export var cart_container: VBoxContainer
 @export var box_spawn_point: Node3D
 @export var joystick: Control
+@export var shop_name_textedit: TextEdit
 
 func _ready() -> void:
 	
@@ -20,6 +21,8 @@ func _ready() -> void:
 		var buyable = BuyableFurniture.create(furn)
 		buyable.add.connect(add_furniture)
 		furniture_container.add_child(buyable)
+	
+	shop_name_textedit.text = Game.instance.shop_name_label.text
 		
 
 func open():
@@ -73,3 +76,10 @@ func _on_button_pressed() -> void:
 				Game.instance.level.add_box(cart_product.product, box_spawn_point.position)
 				await get_tree().create_timer(0.5).timeout
 		empty_cart()
+
+func _on_check_box_toggled(toggled_on: bool) -> void:
+	Game.instance.open.set_value(toggled_on)
+
+
+func _on_text_edit_text_changed() -> void:
+	Game.instance.shop_name_label.text = shop_name_textedit.text
