@@ -15,6 +15,9 @@ func start():
 	var pos = checkout_counter.add_to_queue(npc)
 	npc.agent.target_position = checkout_counter.queue_position(pos)
 
+func finish():
+	npc.complain(npc.goodbye.pick_random(), 2)
+
 func finished():
 	return done
 

@@ -8,7 +8,10 @@ func _init(npc: NPC) -> void:
 
 func start() -> void:
 	return
-	
+
+func finish() -> void:
+	return
+
 func finished() -> bool:
 	return true
 

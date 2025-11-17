@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://dhb0aoybrmxlf" path="res://Scripts/player.gd" id="1_rpqav"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kyqiw"]
+radius = 0.35
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gntrk"]
+radius = 0.35
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera", "hands")]
 collision_layer = 2

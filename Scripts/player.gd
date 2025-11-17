@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 @export var REACH = 10
-@export var speed := 15.0
+@export var speed := 20
 @export var mouse_sensitivity := 0.002
 @export var camera: Camera3D
 @export var hands: Node3D
@@ -51,7 +51,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= Global.gravity * delta
 	elif Input.is_action_just_pressed("jump"):
-		velocity.y = Global.gravity * 3/4
+		velocity.y = Global.gravity
 
 	move_and_slide()
 

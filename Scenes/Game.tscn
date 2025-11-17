@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bisacees2rd6b"]
+[gd_scene load_steps=29 format=3 uid="uid://bisacees2rd6b"]
 
 [ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/game.gd" id="1_kldst"]
 [ext_resource type="Script" uid="uid://dbsvbkmx1ds3h" path="res://Scripts/level.gd" id="2_7lihs"]
@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://drcy2gkasnll5" path="res://UI/BoxContent.tscn" id="6_7lihs"]
 [ext_resource type="PackedScene" uid="uid://dk1np2idhb67f" path="res://UI/Shop/Shop.tscn" id="7_fgofq"]
 [ext_resource type="PackedScene" uid="uid://dqcqdjq48mup6" path="res://UI/JoyStick.tscn" id="8_2irst"]
-[ext_resource type="PackedScene" uid="uid://cyyj6fe42fyhj" path="res://Scenes/Objects/Fridge.tscn" id="9_bf53h"]
 [ext_resource type="PackedScene" uid="uid://bpv6asc6eh4h1" path="res://Assets/Models/Terrain/Road.glb" id="10_71axn"]
 [ext_resource type="PackedScene" uid="uid://dweskrghuuqbi" path="res://Assets/Models/Terrain/Building1.glb" id="11_dahhg"]
 [ext_resource type="PackedScene" uid="uid://cw65yrj0q1k5t" path="res://Assets/Models/Terrain/Eiffel.glb" id="12_3so38"]
+[ext_resource type="PackedScene" uid="uid://cn6dn7nuklova" path="res://Scenes/Objects/Trash.tscn" id="12_alh3a"]
 [ext_resource type="PackedScene" uid="uid://imp25nwtl24w" path="res://Assets/Models/Terrain/Building2.glb" id="13_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://vaskgsoadtg3" path="res://Assets/Models/Terrain/Building3.glb" id="14_wxwew"]
 [ext_resource type="PackedScene" uid="uid://cqtnv6hfpembw" path="res://Assets/Models/Terrain/Archway.glb" id="15_acvyw"]
@@ -39,8 +39,20 @@ ambient_light_energy = 2.5
 agent_height = 7.0
 agent_radius = 1.27
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3xnh"]
+size = Vector3(118.489, 0.001, 120.098)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_acvyw"]
-size = Vector3(179.737, 0.001, 181.835)
+size = Vector3(8.05856, 13.2886, 2.12857)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8r6kd"]
+size = Vector3(15.9712, 13.4277, 2.39588)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tfod6"]
+size = Vector3(16.1224, 15.2881, 2.22559)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rajel"]
+size = Vector3(7.93401, 13.0713, 2.00958)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_alh3a"]
 size = Vector3(681.774, 0.001, 281.435)
@@ -52,11 +64,12 @@ size = Vector3(677.951, 136.399, 97.4667)
 albedo_texture = ExtResource("16_4q8tf")
 uv1_scale = Vector3(10, 10, 10)
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "level", "shop")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("player", "level", "shop", "npc_spawn_area")]
 script = ExtResource("1_kldst")
 player = NodePath("Level/Player")
 level = NodePath("Level/PathfindingRegion")
 shop = NodePath("CanvasLayer/Shop")
+npc_spawn_area = NodePath("Level/NPCSpawnZone")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qxria")
@@ -72,15 +85,31 @@ script = ExtResource("2_7lihs")
 [node name="Shop" type="StaticBody3D" parent="Level/PathfindingRegion/Collisions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26.8861)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/PathfindingRegion/Collisions/Shop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124512, 0, -0.775208)
+[node name="Ground" type="CollisionShape3D" parent="Level/PathfindingRegion/Collisions/Shop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.125, 0, -26.9008)
+shape = SubResource("BoxShape3D_x3xnh")
+
+[node name="Wall1" type="CollisionShape3D" parent="Level/PathfindingRegion/Collisions/Shop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.9696, 6.64379, -85.8784)
 shape = SubResource("BoxShape3D_acvyw")
+
+[node name="Wall2" type="CollisionShape3D" parent="Level/PathfindingRegion/Collisions/Shop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0039, 6.64379, -85.7473)
+shape = SubResource("BoxShape3D_8r6kd")
+
+[node name="Wall3" type="CollisionShape3D" parent="Level/PathfindingRegion/Collisions/Shop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0744, 6.64379, -85.8428)
+shape = SubResource("BoxShape3D_tfod6")
+
+[node name="Wall4" type="CollisionShape3D" parent="Level/PathfindingRegion/Collisions/Shop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.9944, 6.64379, -85.8776)
+shape = SubResource("BoxShape3D_rajel")
 
 [node name="Road" type="StaticBody3D" parent="Level/PathfindingRegion/Collisions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -114.005)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/PathfindingRegion/Collisions/Road"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.98096, -0.4995, -86.2134)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.981, 0, -86.213)
 shape = SubResource("BoxShape3D_alh3a")
 
 [node name="AcrossBuildings" type="StaticBody3D" parent="Level/PathfindingRegion/Collisions"]
@@ -89,6 +118,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -114.005)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/PathfindingRegion/Collisions/AcrossBuildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8481, 68.8042, -100.457)
 shape = SubResource("BoxShape3D_4q8tf")
+
+[node name="Trash" parent="Level/PathfindingRegion" instance=ExtResource("12_alh3a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 30.1546, 0.204545, -66.0362)
 
 [node name="Terrain" type="Node3D" parent="Level"]
 
@@ -114,18 +146,23 @@ transform = Transform3D(-100, 0, -1.50996e-05, 0, 100, 0, 1.50996e-05, 0, -100, 
 transform = Transform3D(19.6658, 0, 45.9702, 0, 50, 0, -45.9702, 0, 19.6658, -3232.03, 361.859, -971.639)
 
 [node name="Shop" parent="Level/Terrain" instance=ExtResource("16_alh3a")]
-transform = Transform3D(150, 0, 0, 0, 50, 0, 0, 0, 150, 0, 0, 26.8861)
+transform = Transform3D(100, 0, 0, 0, 50, 0, 0, 0, 100, 0, 0, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Level/Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0741425, 0.0383447, 28.5419)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0741425, 0.0383447, -0.0489349)
 material_override = SubResource("StandardMaterial3D_x3xnh")
-size = Vector3(179.762, 0.001, 176.595)
+size = Vector3(119.092, 0.001, 119.994)
 
 [node name="Player" parent="Level" instance=ExtResource("3_7lihs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.9676, 0)
 
 [node name="BoxSpawnPoint" type="Node3D" parent="Level"]
-transform = Transform3D(0.999681, 0, -0.0252697, 0, 1, 0, 0.0252697, 0, 0.999681, 41.6396, 9.54946, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -75)
+
+[node name="NPCSpawnZone" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -113.913)
+visible = false
+size = Vector3(336.907, 0.01, 67.289)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -143,9 +180,6 @@ box_spawn_point = NodePath("../../Level/BoxSpawnPoint")
 [node name="NPCSpawn" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
-
-[node name="Fridge" parent="." instance=ExtResource("9_bf53h")]
-transform = Transform3D(-0.937653, 0, -0.347574, 0, 1, 0, 0.347574, 0, -0.937653, 33.5826, 0.620359, 25.7097)
 
 [connection signal="timeout" from="NPCSpawn" to="." method="_on_npc_spawn_timeout"]
 

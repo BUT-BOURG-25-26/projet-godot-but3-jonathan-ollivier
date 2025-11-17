@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctjckbom8e6gm"]
+
+[ext_resource type="Script" uid="uid://bto5722m7wj0g" path="res://Scripts/Objects/bill.gd" id="2_kh4lx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8lbjh"]
+size = Vector3(0.427734, 0.001, 1)
+
+[node name="Bill" type="Area3D"]
+collision_layer = 4
+script = ExtResource("2_kh4lx")
+metadata/_custom_type_script = "uid://dfmuuy21nqtsb"
+
+[node name="Model" type="CSGBox3D" parent="."]
+size = Vector3(0.415527, 0.001, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8lbjh")
+
+[connection signal="clicked" from="." to="." method="_on_clicked"]

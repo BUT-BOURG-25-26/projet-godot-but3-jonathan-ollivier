@@ -1,6 +1,8 @@
 extends Node
 # class_name déclaré dans le autoload
 
+var dev = true
+
 var gravity := 20
 
 var TERRAIN := 1 << 0

@@ -1,28 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://crc2w6r6oe2fx"]
+[gd_scene load_steps=11 format=3 uid="uid://crc2w6r6oe2fx"]
 
 [ext_resource type="Script" uid="uid://bfqowfvf0y2po" path="res://Scripts/Objects/checkout_counter.gd" id="1_tv5kb"]
 [ext_resource type="PackedScene" uid="uid://cs4ec2g6ndq33" path="res://Assets/Models/Furnitures/checkount_counter.glb" id="2_lujsa"]
 [ext_resource type="PackedScene" uid="uid://doxwiqilr4owf" path="res://Scenes/Objects/MixedProductStorage.tscn" id="2_sc7cp"]
-[ext_resource type="Script" uid="uid://f0fxh6ic88e4" path="res://Scripts/Objects/product.gd" id="3_rw25l"]
-[ext_resource type="Resource" uid="uid://dvqby7m3fd1mq" path="res://Products/Cereals.tres" id="4_wbs6f"]
-[ext_resource type="Resource" uid="uid://c7idfdkiuc6a4" path="res://Products/Flashlight.tres" id="5_lujsa"]
+[ext_resource type="Texture2D" uid="uid://ddmo418bojfnc" path="res://Assets/Sprites/bill_1.png" id="5_rw25l"]
+[ext_resource type="Texture2D" uid="uid://de5xu4m55tys4" path="res://Assets/Sprites/bill_2.png" id="6_hxtsj"]
 [ext_resource type="AudioStream" uid="uid://kkyi11ilufdv" path="res://Assets/Sounds/bip.wav" id="7_lujsa"]
+[ext_resource type="Texture2D" uid="uid://0udb7l3gglqf" path="res://Assets/Sprites/bill_5.png" id="7_vhjxi"]
+[ext_resource type="Texture2D" uid="uid://tjt4rbomjx41" path="res://Assets/Sprites/bill_10.png" id="8_bnqcg"]
+[ext_resource type="PackedScene" uid="uid://ctjckbom8e6gm" path="res://Scenes/Objects/Bill.tscn" id="8_hxtsj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lujsa"]
 size = Vector3(12.7149, 6.63007, 3.45617)
 
-[node name="CheckoutCounter" type="StaticBody3D" node_paths=PackedStringArray("productContainer", "sound", "price_label", "queue_start", "queue2")]
+[node name="CheckoutCounter" type="StaticBody3D" node_paths=PackedStringArray("productContainer", "sound", "price_label", "queue_start", "queue2", "bills_container")]
 script = ExtResource("1_tv5kb")
 productContainer = NodePath("Products")
 sound = NodePath("bip")
 price_label = NodePath("Label3D")
 queue_start = NodePath("QueueStart")
 queue2 = NodePath("Queue2")
+bills_container = NodePath("Bills")
 
 [node name="Products" parent="." instance=ExtResource("2_sc7cp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44958, 5.36544, 0.020874)
 size = Vector3(7.30493, 3.26184, 3.01587)
-products = Array[ExtResource("3_rw25l")]([ExtResource("4_wbs6f"), ExtResource("4_wbs6f"), ExtResource("5_lujsa")])
 
 [node name="bip" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_lujsa")
@@ -51,5 +53,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0252, 0, -4.47112)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25058, 3.34349, -0.0196791)
 shape = SubResource("BoxShape3D_lujsa")
+
+[node name="Bills" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.73394, 3.60321, 0.762548)
+
+[node name="Bill_1" parent="Bills" instance=ExtResource("8_hxtsj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.976138, 0, 0)
+value = 1
+texture = ExtResource("5_rw25l")
+
+[node name="Bill_2" parent="Bills" instance=ExtResource("8_hxtsj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34486, 0, 0)
+value = 2
+texture = ExtResource("6_hxtsj")
+
+[node name="Bill_5" parent="Bills" instance=ExtResource("8_hxtsj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.308986, 0, 0)
+value = 5
+texture = ExtResource("7_vhjxi")
+
+[node name="Bill_10" parent="Bills" instance=ExtResource("8_hxtsj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.974994, 0, 0)
+value = 10
+texture = ExtResource("8_bnqcg")
 
 [connection signal="clicked" from="Products" to="." method="_on_products_clicked"]

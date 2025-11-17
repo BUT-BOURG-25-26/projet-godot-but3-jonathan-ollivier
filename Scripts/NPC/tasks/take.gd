@@ -19,6 +19,7 @@ func loop():
 			count = 0
 		product_storage.remove_one()
 		npc.products.append(product_storage.product)
+		count -= 1
 		
 		var look_at_pos = product_storage.global_position
 		look_at_pos.y = 0

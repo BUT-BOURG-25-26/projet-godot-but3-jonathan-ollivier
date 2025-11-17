@@ -25,7 +25,7 @@ var image_texture: ImageTexture
 func load(scene: SceneTree = null) -> void:
 	assert(image_texture == null)
 	_calculate_bounds()
-	_create_image(scene)
+	await _create_image(scene)
 
 func _calculate_bounds():
 	var model_instance = model.instantiate()

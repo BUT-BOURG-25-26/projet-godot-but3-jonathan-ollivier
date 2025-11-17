@@ -16,6 +16,19 @@ var slurs = [
 	"Feels like you store your ideas on a floppy disk."
 ]
 
+var goodbye = [
+	"Thank you very much",
+	"Have a good day",
+	"See you next time",
+	"Thanks, goodbye",
+	"Take care",
+	"Have a nice evening",
+	"Thanks, see you soon",
+	"Appreciate it, bye",
+	"Have a great rest of your day",
+	"Thanks, see you around"
+]
+
 var animations = {
 	walk = {
 		res = "CharacterArmature|Walk",
@@ -66,17 +79,23 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func next_task():
+	if current_task:
+		current_task.finish()
 	current_task = tasks.pop_front()
 	current_task.start()
 
 func init_behavior():
 	var product_count = randi_range(1, 3)
 	for i in range(product_count):
-		var aisle = Game.instance.level.aisles.pick_random()
-		var storage = aisle.products_storages.pick_random()
+		var aisle = Game.instance.level.aisles.pick_random() as Aisle
+		var storage = aisle.products_storages.pick_random() as ProductStorage 
+		if storage.count == 0:
+			continue
+			
 		tasks.append(GotoTask.new(self, storage.front.global_position))
-		tasks.append(TakeTask.new(self, storage, randi_range(0, min(5, storage.count))))
+		tasks.append(TakeTask.new(self, storage, randi_range(1, 3)))
 	tasks.append(CheckoutTask.new(self, Game.instance.level.checkout_counters.pick_random()))
+	tasks.append(GotoTask.new(self, Game.instance.random_npc_spawn_location()))
 	# TODO: le faire aller à la caisse pour attendre
 
 func init_model():
@@ -108,6 +127,8 @@ func handle_tasks():
 			next_task()
 	elif !tasks.is_empty():
 		next_task()
+	else:
+		queue_free()
 
 func complain(text: String, duration: float = 5.0):
 	complaint_label.text = text

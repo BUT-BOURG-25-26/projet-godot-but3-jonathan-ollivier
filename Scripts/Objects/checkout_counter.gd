@@ -6,6 +6,7 @@ class_name CheckoutCounter
 @export var price_label: Label3D
 @export var queue_start: Node3D
 @export var queue2: Node3D
+@export var bills_container: Node3D
 
 var total_price: float = 0
 var paid: float = 0
@@ -15,19 +16,19 @@ static var scene: PackedScene = preload("res://Scenes/Objects/CheckoutCounter.ts
 
 func _ready():
 	update_label()
+	init_bills()
 
 func _on_products_clicked(player: Player, mouseButton: int) -> void:
-	if player.in_hands is Box:
-		productContainer.add_item(player.in_hands.product)
-		return
 	if productContainer.hasProducts():
 		total_price += productContainer.remove_last_item().unit_price
 		update_label()
 		sound.play()
-	
-	if !productContainer.hasProducts():
-		paid = total_price + randi_range(0,10)
-		update_label()
+		if !productContainer.hasProducts():
+			var overpaid = int(total_price * randf_range(0, 0.5))
+			paid = total_price + overpaid
+			if overpaid == 0:
+				next_customer()
+			update_label()
 
 func update_label():
 	price_label.text = "TOTAL: %0.2f€\nPAID: %0.2f€\nDUE: %0.2f€" % [total_price, paid, max(0, paid - total_price)]
@@ -51,6 +52,30 @@ func current_customer() -> NPC:
 
 func add_item(product: Product) -> void:
 	productContainer.add_item(product)
+
+func init_bills():
+	for c in bills_container.get_children():
+		var bill = c as Bill
+		c.add.connect(give_back_money)
+
+func give_back_money(value: int):
+	if !current_customer():
+		return
+	
+	paid -= value
+	Game.instance.money -= value
+	update_label()
+	if paid <= total_price:
+		next_customer()
+
+func next_customer():
+	paid = 0
+	total_price = 0
+	
+	var cur = queue.pop_front()
+	if (cur && cur.current_task is CheckoutTask):
+		(cur.current_task as CheckoutTask).done = true
+
 
 static func create():
 	return scene.instantiate()

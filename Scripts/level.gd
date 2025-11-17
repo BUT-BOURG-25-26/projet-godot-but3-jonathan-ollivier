@@ -14,15 +14,11 @@ func init():
 	
 	add_checkout_counter(Vector3(10, 0, 15), false)
 	
-	var trash = add_trash(Vector3(30, 0, 10))
-	
-	trash.rotation.y = -PI/2
-	
 	bake_navigation_mesh()
 	
 	await get_tree().create_timer(1).timeout
-	for i in range(len(Global.products)):
-		add_box(Global.products[i], Vector3(0, 10 + 2*i, -10))
+	#for i in range(len(Global.products)):
+		#add_box(Global.products[i], Vector3(0, 10 + 2*i, -10))
 
 func add_aisle(position: Vector3 = Vector3.ZERO, bake_navmesh: bool = true) -> Aisle:
 	var aisle = Aisle.create()

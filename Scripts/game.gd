@@ -6,16 +6,20 @@ static var instance: Game
 @export var player: Player
 @export var level: Level
 @export var shop: Shop
+@export var npc_spawn_area: CSGBox3D
 
 var money: float = 1_000
 
 func _ready() -> void:
 	assert(instance == null) # pr le singleton
 	instance = self
+	
 	level.init()
 	
+	if Global.dev:
+		var npc = level.add_npc(Vector3(10, 0, 0))
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	level.add_npc(Vector3(40, 0, -10))
 
 func _process(delta):
 	if Input.is_action_just_pressed("dev"):
@@ -32,6 +36,13 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_released("alt"):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+func random_npc_spawn_location():
+	var size = npc_spawn_area.size
+	return npc_spawn_area.global_position + Vector3(
+		randf_range(-size.x/2, size.x/2,),
+		0,
+		randf_range(-size.z/2, size.z/2,),
+	)
 
 func _on_npc_spawn_timeout() -> void:
-	level.add_npc(Vector3(40, 0, -10))
+	level.add_npc(random_npc_spawn_location())
