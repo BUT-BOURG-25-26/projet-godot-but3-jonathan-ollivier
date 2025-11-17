@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -18,18 +19,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Virtual Joystick" parent="HBoxContainer" instance=ExtResource("1_0qwoh")]
+[node name="Container" type="Container" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-mouse_filter = 2
+
+[node name="Virtual Joystick" parent="HBoxContainer/Container" instance=ExtResource("1_0qwoh")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 joystick_mode = 1
-visibility_mode = 2
 action_left = "left"
 action_right = "right"
 action_up = "forward"
 action_down = "backward"
 
-[node name="Container" type="Container" parent="HBoxContainer"]
+[node name="Container2" type="Container" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-mouse_filter = 2

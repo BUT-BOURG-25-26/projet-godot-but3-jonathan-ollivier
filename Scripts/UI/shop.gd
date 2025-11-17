@@ -80,6 +80,9 @@ func _on_button_pressed() -> void:
 func _on_check_box_toggled(toggled_on: bool) -> void:
 	Game.instance.open.set_value(toggled_on)
 
-
 func _on_text_edit_text_changed() -> void:
 	Game.instance.shop_name_label.text = shop_name_textedit.text
+
+
+func _on_bankruptcy_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")

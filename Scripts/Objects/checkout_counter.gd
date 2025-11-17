@@ -11,6 +11,7 @@ class_name CheckoutCounter
 var total_price: float = 0
 var paid: float = 0
 var queue: Array[NPC] = []
+var product_margin := 0.5 # en pourcentage
 
 static var scene: PackedScene = preload("res://Scenes/Objects/CheckoutCounter.tscn")
 
@@ -20,7 +21,8 @@ func _ready():
 
 func _on_products_clicked(player: Player, mouseButton: int) -> void:
 	if productContainer.hasProducts():
-		total_price += productContainer.remove_last_item().unit_price
+		Statistics.products_bought += 1
+		total_price += productContainer.remove_last_item().unit_price * (1 + product_margin)
 		update_label()
 		sound.play()
 		if !productContainer.hasProducts() && current_customer().products.is_empty():
@@ -69,6 +71,7 @@ func give_back_money(value: int):
 
 func next_customer():
 	Game.instance.money.set_value(Game.instance.money.get_value() + paid)
+	Statistics.generated_cash += paid
 	
 	var cur = queue.pop_front()
 	if (cur && cur.current_task is CheckoutTask):

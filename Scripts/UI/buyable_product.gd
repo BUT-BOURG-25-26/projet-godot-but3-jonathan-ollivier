@@ -12,6 +12,7 @@ var product: Product
 @export var name_label: Label
 @export var quantity_label: Label
 @export var price_label: Label
+@export var container_type_label: Label
 
 static func create(product: Product) -> BuyableProduct:
 	var instance = scene.instantiate()
@@ -20,6 +21,7 @@ static func create(product: Product) -> BuyableProduct:
 	instance.name_label.text = product.name
 	instance.quantity_label.text = "Quantity: " + str(product.unit_per_box)
 	instance.price_label.text = str(product.unit_price * product.unit_per_box) + "$"
+	instance.container_type_label.text = Global.container_names[product.container_type]
 	
 	var stylebox = StyleBoxTexture.new()
 	stylebox.texture = product.image_texture

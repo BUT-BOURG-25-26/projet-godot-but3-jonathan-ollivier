@@ -8,7 +8,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="BuyableProduct" type="Control" node_paths=PackedStringArray("image", "name_label", "quantity_label", "price_label")]
+[node name="BuyableProduct" type="Control" node_paths=PackedStringArray("image", "name_label", "quantity_label", "price_label", "container_type_label")]
 custom_minimum_size = Vector2(375, 150)
 layout_mode = 3
 anchors_preset = 15
@@ -22,6 +22,7 @@ image = NodePath("Panel/MarginContainer/HBoxContainer/AspectRatioContainer/Image
 name_label = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/Name")
 quantity_label = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/Quantity")
 price_label = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/Price")
+container_type_label = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/ContainerType")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(300, 150)
@@ -83,7 +84,7 @@ layout_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 15
 text = "Quantity: 15"
 horizontal_alignment = 1
 
@@ -92,8 +93,17 @@ layout_mode = 2
 mouse_filter = 1
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.666667, 0, 0, 1)
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 30
 text = "65$"
+horizontal_alignment = 1
+
+[node name="ContainerType" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Fridge"
 horizontal_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

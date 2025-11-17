@@ -67,10 +67,11 @@ func _physics_process(delta):
 	move_and_slide()
 
 func handle_click(event):
-	if event.button_index in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT]:
+	if event is InputEventScreenTouch or event.button_index in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT]:
 		var hit = _shoot_raycast(Global.CLICKABLE | Global.HOLDABLE, event.position)
 		if hit:
 			hit.collider.clicked.emit(self, event.button_index if event is InputEventMouseButton else MOUSE_BUTTON_LEFT)
+			hit.collider.hold.emit(self, event.button_index if event is InputEventMouseButton else MOUSE_BUTTON_LEFT)
 		elif in_hands:
 			var terrain_hit = _shoot_raycast(Global.TERRAIN)
 			if terrain_hit:

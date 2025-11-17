@@ -11,7 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_853f1")
-loading_screen = NodePath("ColorRect")
+loading_screen = NodePath("Loading")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -76,7 +76,8 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 50
 text = "Quit"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Loading" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,7 +85,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+[node name="CenterContainer" type="CenterContainer" parent="Loading"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,7 +93,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="ColorRect/CenterContainer"]
+[node name="Label" type="Label" parent="Loading/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Loading..."

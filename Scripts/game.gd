@@ -51,3 +51,8 @@ func _on_npc_spawn_timeout() -> void:
 	if !open.get_value():
 		return
 	level.add_npc(random_npc_spawn_location())
+	Statistics.customer_count += 1
+
+
+func _on_button_pressed() -> void:
+	shop.toggle()

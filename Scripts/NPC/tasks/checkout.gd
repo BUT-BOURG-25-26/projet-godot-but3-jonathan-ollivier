@@ -45,7 +45,6 @@ func loop():
 		
 
 func pathfind():
-	print(npc.agent.target_position, " ", npc.agent.distance_to_target())
 
 	var pos = npc.agent.get_next_path_position()
 	var dir = (pos - npc.global_position).normalized()

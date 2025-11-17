@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk1np2idhb67f"]
+[gd_scene load_steps=5 format=3 uid="uid://dk1np2idhb67f"]
 
 [ext_resource type="Script" uid="uid://cvur2u565n883" path="res://Scripts/UI/shop.gd" id="1_7ehp3"]
 [ext_resource type="Script" uid="uid://cm18kkndfjqk5" path="res://Scripts/UI/current_balance.gd" id="2_nciox"]
@@ -9,6 +9,14 @@ corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pwpk6"]
+bg_color = Color(1, 0.348041, 0.228939, 1)
+border_width_left = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Shop" type="Control" node_paths=PackedStringArray("product_container", "furniture_container", "cart_container", "shop_name_textedit")]
 layout_mode = 3
@@ -145,6 +153,11 @@ text = "Shop name"
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 
+[node name="Bankruptcy" type="Button" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pwpk6")
+text = "Declare bankruptcy"
+
 [node name="Products" type="HBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer"]
 visible = false
 layout_mode = 2
@@ -269,4 +282,5 @@ theme_override_constants/v_separation = 15
 
 [connection signal="toggled" from="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer/Open/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="text_changed" from="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer/ShopName/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer/Bankruptcy" to="." method="_on_bankruptcy_pressed"]
 [connection signal="pressed" from="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Products/Cart/ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]

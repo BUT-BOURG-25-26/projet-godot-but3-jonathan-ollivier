@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bisacees2rd6b"]
+[gd_scene load_steps=32 format=3 uid="uid://bisacees2rd6b"]
 
 [ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/game.gd" id="1_kldst"]
 [ext_resource type="Script" uid="uid://dbsvbkmx1ds3h" path="res://Scripts/level.gd" id="2_7lihs"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://c8f34hio7xd3r" path="res://Assets/Models/Terrain/Shop.glb" id="16_alh3a"]
 [ext_resource type="PackedScene" uid="uid://dgyfq0q2kjka3" path="res://UI/Crosshair.tscn" id="17_4q8tf"]
 [ext_resource type="PackedScene" uid="uid://bkgvbpkj5bypy" path="res://UI/ShopOpen.tscn" id="18_x3xnh"]
+[ext_resource type="PackedScene" uid="uid://d2gr0276yr1s6" path="res://UI/ShopButton.tscn" id="19_8r6kd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxria"]
 sky_top_color = Color(0.384314, 0.756863, 0.898039, 1)
@@ -189,16 +190,19 @@ mouse_filter = 2
 player = NodePath("../../Level/Player")
 
 [node name="JoyStick" parent="CanvasLayer" instance=ExtResource("8_2irst")]
-mouse_filter = 2
 
 [node name="Crosshair" parent="CanvasLayer" instance=ExtResource("17_4q8tf")]
 
 [node name="ShopOpen" parent="CanvasLayer" instance=ExtResource("18_x3xnh")]
 
+[node name="ShopButton" parent="CanvasLayer" instance=ExtResource("19_8r6kd")]
+
 [node name="NPCSpawn" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
 
+[connection signal="pressed" from="CanvasLayer/ShopButton/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="NPCSpawn" to="." method="_on_npc_spawn_timeout"]
 
 [editable path="Level/Terrain/Road"]
+[editable path="CanvasLayer/ShopButton"]

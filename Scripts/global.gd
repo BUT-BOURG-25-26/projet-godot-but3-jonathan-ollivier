@@ -1,7 +1,8 @@
 extends Node
 # class_name déclaré dans le autoload
 
-signal loaded
+var loaded = false
+signal loaded_signal
 
 var dev = true
 
@@ -17,6 +18,8 @@ enum ContainerType {
 	NORMAL,
 	FREEZER,
 }
+
+var container_names = ["Normal", "Freezer"]
 
 var products: Array[Product] = []
 var furnitures: Array[Furniture] = []
@@ -34,7 +37,8 @@ func _ready() -> void:
 		await furniture.load(get_tree())
 		furnitures.push_back(furniture)
 	
-	loaded.emit()
+	loaded_signal.emit()
+	loaded = true
 
 
 func is_on_layer(node: Node3D, layer_mask: int) -> bool:
