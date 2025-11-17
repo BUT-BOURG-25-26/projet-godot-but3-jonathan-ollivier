@@ -32,3 +32,11 @@ static func create(product: Product) -> ProductInCart:
 	
 	return instance
 	
+func _on_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
+		count -= 1
+		if count == 0:
+			get_parent().remove_child(self)
+			queue_free()
+		else:
+			update_labels()
