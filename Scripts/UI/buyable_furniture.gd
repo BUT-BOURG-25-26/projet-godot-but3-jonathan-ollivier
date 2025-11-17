@@ -28,4 +28,5 @@ static func create(furniture: Furniture) -> BuyableFurniture:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-		add.emit(furniture)
+		if Game.instance.money.get_value() >= furniture.price:
+			add.emit(furniture)
