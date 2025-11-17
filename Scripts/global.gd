@@ -1,6 +1,8 @@
 extends Node
 # class_name déclaré dans le autoload
 
+signal loaded
+
 var dev = true
 
 var gravity := 20
@@ -26,6 +28,8 @@ func _ready() -> void:
 		var furniture: Furniture = ResourceLoader.load("res://Resources/Furnitures/" + file)
 		await furniture.load(get_tree())
 		furnitures.push_back(furniture)
+	
+	loaded.emit()
 
 
 func is_on_layer(node: Node3D, layer_mask: int) -> bool:

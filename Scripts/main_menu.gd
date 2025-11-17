@@ -1,6 +1,12 @@
 extends Control
 class_name MainMenu
 
+@export var loading_screen: ColorRect
+
+func _ready():
+	await Global.loaded
+	loading_screen.hide()
+
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 

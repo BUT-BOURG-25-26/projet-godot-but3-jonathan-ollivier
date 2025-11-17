@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b4yi8ulqoge36" path="res://Scripts/main_menu.gd" id="1_853f1"]
 [ext_resource type="Texture2D" uid="uid://dp60t4wv03iu1" path="res://Assets/logo.png" id="1_tt5f1"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("loading_screen")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_853f1")
+loading_screen = NodePath("ColorRect")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -74,6 +75,27 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 50
 text = "Quit"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Loading..."
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
