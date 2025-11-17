@@ -22,6 +22,9 @@ queue_start = NodePath("QueueStart")
 queue2 = NodePath("Queue2")
 bills_container = NodePath("Bills")
 
+[node name="Model" parent="." instance=ExtResource("2_lujsa")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+
 [node name="Products" parent="." instance=ExtResource("2_sc7cp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44958, 5.36544, 0.020874)
 size = Vector3(7.30493, 3.26184, 3.01587)
@@ -40,9 +43,6 @@ DUE: 10€"
 font_size = 115
 outline_size = 0
 line_spacing = 200.0
-
-[node name="checkount_counter" parent="." instance=ExtResource("2_lujsa")]
-transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 
 [node name="QueueStart" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12666, 0, -4.47112)

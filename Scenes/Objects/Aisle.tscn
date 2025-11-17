@@ -12,7 +12,6 @@ script = ExtResource("1_f3t1a")
 products_storages = [NodePath("ProductsStorages/ProductsStorage1"), NodePath("ProductsStorages/ProductsStorage2"), NodePath("ProductsStorages/ProductsStorage3"), NodePath("ProductsStorages/ProductsStorage4")]
 
 [node name="Model" parent="." instance=ExtResource("1_7e5i7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.97277, 0)
 
 [node name="ProductsStorages" type="Node3D" parent="."]
 

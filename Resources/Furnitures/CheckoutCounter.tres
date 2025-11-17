@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Furniture" load_steps=3 format=3 uid="uid://b28xud2gti2rh"]
+
+[ext_resource type="Script" uid="uid://2m3t4jef8okp" path="res://Scripts/Objects/furniture.gd" id="1_w0wlw"]
+[ext_resource type="PackedScene" uid="uid://crc2w6r6oe2fx" path="res://Scenes/Objects/CheckoutCounter.tscn" id="1_xvah6"]
+
+[resource]
+script = ExtResource("1_w0wlw")
+name = "Checkout counter"
+price = 300.0
+scene = ExtResource("1_xvah6")
+metadata/_custom_type_script = "uid://2m3t4jef8okp"

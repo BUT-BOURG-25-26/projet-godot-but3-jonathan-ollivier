@@ -75,10 +75,9 @@ size_flags_vertical = 3
 [node name="TabContainer" type="TabContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs"]
 layout_mode = 2
 size_flags_horizontal = 3
-current_tab = 1
+current_tab = 0
 
 [node name="Products" type="HBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -160,6 +159,7 @@ layout_mode = 2
 text = "Buy"
 
 [node name="Furnitures" type="HBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

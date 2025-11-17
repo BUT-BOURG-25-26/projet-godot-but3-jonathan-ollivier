@@ -20,7 +20,7 @@ func finish():
 	super.finish()
 	if too_much_due:
 		npc.complain(npc.steal.pick_random(), 2)
-		npc.SPEED *= 1.5
+		npc.SPEED *= 3
 	else:
 		npc.complain(npc.goodbye.pick_random(), 2)
 

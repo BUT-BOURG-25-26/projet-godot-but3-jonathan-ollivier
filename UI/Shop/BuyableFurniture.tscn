@@ -9,6 +9,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="Furniture" type="Control" node_paths=PackedStringArray("image", "name_label", "price_label")]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +23,7 @@ price_label = NodePath("Panel/MarginContainer/HBoxContainer/VBoxContainer/Price"
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
 offset_right = 200.0
 offset_bottom = 303.0
 size_flags_horizontal = 3
@@ -74,6 +76,8 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Rack"
 horizontal_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
 
 [node name="Price" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -83,3 +87,5 @@ theme_override_colors/font_color = Color(0.666667, 0, 0, 1)
 theme_override_font_sizes/font_size = 35
 text = "65$"
 horizontal_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

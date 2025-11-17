@@ -47,7 +47,10 @@ func add_product(product: Product):
 	cart_container.add_child(ProductInCart.create(product))
 
 func add_furniture(furniture: Furniture):
-	pass
+	var instance = furniture.create_ghost_model()
+	Game.instance.player.get_in_hand(furniture)
+	Game.instance.money.set_value(Game.instance.money.get_value() - furniture.price)
+	close()
 
 func total_price():
 	var total = 0

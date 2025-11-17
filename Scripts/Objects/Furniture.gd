@@ -4,14 +4,16 @@ class_name Furniture
 @export var name: String
 @export var price: float
 @export var scene: PackedScene
+
 var image_texture: ImageTexture
+var ghost
 
 func create_ghost_model() -> Node3D:
 	var scene = scene.instantiate()
 	var model = scene.find_child("Model")
 	if !model:
 		return
-	scene.remove_child(model)
+	model.get_parent().remove_child(model)
 	
 	var meshes = model.find_children("*", "MeshInstance3D", true, false)
 	for mesh in meshes:
@@ -35,7 +37,6 @@ func load(scene: SceneTree) -> void:
 	
 	var camera := Camera3D.new()
 	camera.position = Vector3(0, 5.0, 10.5)
-	camera.look_at(Vector3.ZERO, Vector3.UP)
 	root.add_child(camera)
 	
 	var light := DirectionalLight3D.new()
@@ -55,6 +56,20 @@ func load(scene: SceneTree) -> void:
 	image_texture = ImageTexture.create_from_image(img)
 	
 	subviewport.queue_free()
+
+func pick(node: Node3D):
+	pass
+
+func drop(position: Vector3):
+	if ghost:
+		ghost.get_parent().remove_child(ghost)
+		ghost.queue_free()
+		Game.instance.level.add_furniture(self, position)
+
+	
+
+
+
 
 func create() -> Rack:
 	return scene.instantiate()

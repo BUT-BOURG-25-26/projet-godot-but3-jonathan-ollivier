@@ -65,3 +65,17 @@ func add_trash(position: Vector3 = Vector3.ZERO):
 	trash.position = position
 	add_child(trash)
 	return trash
+
+func add_furniture(furniture: Furniture, position: Vector3 = Vector3.ZERO, bake_navmesh: bool = true):
+	var instance = furniture.create()
+	instance.position = position
+	add_child(instance)
+	if (bake_navmesh):
+		bake_navigation_mesh()
+		
+	if instance is CheckoutCounter:
+		checkout_counters.append(instance)
+	elif instance is Aisle:
+		aisles.append(instance)
+		
+	return instance

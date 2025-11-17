@@ -21,9 +21,6 @@ func _ready() -> void:
 		var npc = level.add_npc(Vector3(10, 0, 0))
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	
-	for furniture in Global.furnitures:
-		level.add_child(furniture.create_ghost_model())
 
 func _process(delta):
 	if Input.is_action_just_pressed("dev"):
