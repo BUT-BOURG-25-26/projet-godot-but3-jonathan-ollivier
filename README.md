@@ -1,7 +1,9 @@
 # Supermarket Alone
-Même concept que Supermarket Together, mais sans le multijoueur. Le projet étant assez complexe, il est jouable sur téléphone mais est plutot conçu pour être joué sur PC. J'ai essayé de produire le code le + clean possible en appliquant des principes de base de qualité de développement (Séparation des responsabilités, design pattern Oberver, utilisation d'héritage...), ce qui fait que le projet est facilement extensible (ex: rajouter un nouvel article se fait par la simple création d'une ressource Godot, directement via l'interface de l'éditeur).
 
 Jonathan OLLIVIER
+
+Même concept que Supermarket Together, mais sans le multijoueur. Le projet étant assez complexe, il est jouable sur téléphone mais est plutot conçu pour être joué sur PC. J'ai essayé de produire le code le + clean possible en appliquant des principes de base de qualité de développement (Séparation des responsabilités, design pattern Oberver, utilisation d'héritage...), ce qui fait que le projet est facilement extensible (ex: rajouter un nouvel article se fait par la simple création d'une ressource Godot, directement via l'interface de l'éditeur).
+
 
 # Points
 
