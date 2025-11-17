@@ -1,24 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://bquooy66p2kgr"]
+[gd_scene load_steps=3 format=3 uid="uid://bquooy66p2kgr"]
 
 [ext_resource type="Script" uid="uid://da7eu08b6gi6r" path="res://Scripts/UI/money_count.gd" id="1_e73ny"]
+[ext_resource type="AudioStream" uid="uid://dlq370djt0y42" path="res://Assets/Sounds/cling.mp3" id="2_f3yis"]
 
-[node name="MoneyCount" type="Control" node_paths=PackedStringArray("label")]
+[node name="MoneyCount" type="Control" node_paths=PackedStringArray("label", "delta_label", "delta_timer", "sound")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_e73ny")
-label = NodePath("Label")
+label = NodePath("MarginContainer/VBoxContainer/Label")
+delta_label = NodePath("MarginContainer/VBoxContainer/delta")
+delta_timer = NodePath("DeltaTimer")
+sound = NodePath("Cling")
 
-[node name="Label" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -171.0
-offset_bottom = 55.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "1000.00$"
+horizontal_alignment = 2
+
+[node name="delta" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.482353, 1, 0, 1)
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 2
+clip_text = true
+
+[node name="DeltaTimer" type="Timer" parent="."]
+
+[node name="Cling" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_f3yis")
+
+[connection signal="timeout" from="DeltaTimer" to="." method="_on_delta_timer_timeout"]

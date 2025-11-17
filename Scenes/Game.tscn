@@ -175,7 +175,6 @@ box_spawn_point = NodePath("../../Level/BoxSpawnPoint")
 joystick = NodePath("../JoyStick")
 
 [node name="MoneyCount" parent="CanvasLayer" instance=ExtResource("5_b2bpf")]
-mouse_filter = 2
 
 [node name="BoxContent" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("6_7lihs")]
 mouse_filter = 2

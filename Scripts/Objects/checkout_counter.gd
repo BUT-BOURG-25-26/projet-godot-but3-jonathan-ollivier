@@ -26,9 +26,9 @@ func _on_products_clicked(player: Player, mouseButton: int) -> void:
 		if !productContainer.hasProducts() && current_customer().products.is_empty():
 			var overpaid = int(total_price * randf_range(0, 0.5))
 			paid = total_price + overpaid
+			update_label()
 			if overpaid == 0:
 				next_customer()
-			update_label()
 
 func update_label():
 	price_label.text = "TOTAL: %0.2f€\nPAID: %0.2f€\nDUE: %0.2f€" % [total_price, paid, max(0, paid - total_price)]
@@ -63,12 +63,13 @@ func give_back_money(value: int):
 		return
 	
 	paid -= value
-	Game.instance.money.set_value(Game.instance.money.get_value() - value)
 	update_label()
 	if paid <= total_price:
 		next_customer()
 
 func next_customer():
+	Game.instance.money.set_value(Game.instance.money.get_value() + paid)
+	
 	paid = 0
 	total_price = 0
 	
