@@ -70,12 +70,13 @@ func give_back_money(value: int):
 func next_customer():
 	Game.instance.money.set_value(Game.instance.money.get_value() + paid)
 	
-	paid = 0
-	total_price = 0
-	
 	var cur = queue.pop_front()
 	if (cur && cur.current_task is CheckoutTask):
 		(cur.current_task as CheckoutTask).done = true
+		(cur.current_task as CheckoutTask).too_much_due = paid < total_price
+	
+	paid = 0
+	total_price = 0
 
 
 static func create():

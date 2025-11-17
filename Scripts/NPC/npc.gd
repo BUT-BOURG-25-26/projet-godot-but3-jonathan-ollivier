@@ -29,6 +29,19 @@ var goodbye = [
 	"Thanks, see you around"
 ]
 
+var steal = [
+	"Get lost!",
+	"Beat it!",
+	"Buzz off!",
+	"Scram!",
+	"Outta my way!",
+	"Back off!",
+	"Don’t follow me!",
+	"Hands off, it’s mine!",
+	"Stay away!",
+	"Forget it, I’m gone!"
+]
+
 var animations = {
 	walk = {
 		res = "CharacterArmature|Walk",

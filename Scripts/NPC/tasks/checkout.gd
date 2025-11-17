@@ -3,6 +3,8 @@ class_name CheckoutTask
 
 var checkout_counter: CheckoutCounter
 var done: bool = false
+var too_much_due: bool = false
+var lane_pos: int = -1
 
 func _init(npc: NPC, cc: CheckoutCounter):
 	super._init(npc)
@@ -12,17 +14,28 @@ func start():
 	if npc.products.is_empty():
 		done = true
 		return
-	var pos = checkout_counter.add_to_queue(npc)
-	npc.agent.target_position = checkout_counter.queue_position(pos)
+	checkout_counter.add_to_queue(npc)
 
 func finish():
 	super.finish()
-	npc.complain(npc.goodbye.pick_random(), 2)
+	if too_much_due:
+		npc.complain(npc.steal.pick_random(), 2)
+		npc.SPEED *= 1.5
+	else:
+		npc.complain(npc.goodbye.pick_random(), 2)
 
 func finished():
 	return done
 
 func loop():
+	var cur_lane_pos = checkout_counter.customer_position(npc)
+	print(cur_lane_pos, " ", lane_pos)
+	if lane_pos != cur_lane_pos:
+		lane_pos = cur_lane_pos
+		var pos = checkout_counter.queue_position(lane_pos)
+		npc.agent.target_position = pos
+		print(pos)
+	
 	if !npc.agent.is_target_reached():
 		pathfind()
 		return
