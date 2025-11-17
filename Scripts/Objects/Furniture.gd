@@ -62,12 +62,11 @@ func pick(node: Node3D):
 
 func drop(position: Vector3):
 	if ghost:
+		var furn = Game.instance.level.add_furniture(self, position)
+		furn.rotation.y = ghost.rotation.y
+		
 		ghost.get_parent().remove_child(ghost)
 		ghost.queue_free()
-		Game.instance.level.add_furniture(self, position)
-
-	
-
 
 
 

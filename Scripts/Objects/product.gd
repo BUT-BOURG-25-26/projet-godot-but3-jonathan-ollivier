@@ -5,6 +5,7 @@ class_name Product
 @export var name: String
 @export var unit_price: float = 1
 @export var unit_per_box: int = 12
+@export var container_type: Global.ContainerType = Global.ContainerType.NORMAL
 
 @export_subgroup("Model")
 @export var model: PackedScene

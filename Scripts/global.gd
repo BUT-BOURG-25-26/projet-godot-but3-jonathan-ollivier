@@ -13,6 +13,11 @@ var CLICKABLE := 1 << 2
 var HOLDABLE := 1 << 3
 var HOVERABLE := 1 << 4
 
+enum ContainerType {
+	NORMAL,
+	FREEZER,
+}
+
 var products: Array[Product] = []
 var furnitures: Array[Furniture] = []
 

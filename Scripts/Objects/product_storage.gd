@@ -1,6 +1,7 @@
 class_name ProductStorage
 extends CSGBox3D
 
+@export var container_type: Global.ContainerType = Global.ContainerType.NORMAL
 @export var product: Product = null
 @export var count: int = 0
 @export var pop_sound: AudioStreamPlayer3D
@@ -37,13 +38,17 @@ func _process(delta: float) -> void:
 func _on_area_3d_hold(player: Player, mouseButton: int) -> void:
 	if !cooldown.is_stopped():
 		return
-	if player.in_hands is not Box: 
+	var in_hands = player.in_hands
+	if in_hands is not Box: 
 		return
 	
-	if mouseButton == MOUSE_BUTTON_LEFT:	
-		if !product || count == 0:
+	if in_hands.product.container_type != container_type:
+		return
+	
+	if mouseButton == MOUSE_BUTTON_LEFT:
+		if (!product || count == 0):
 			set_product(player.in_hands.product)
-		elif player.in_hands.product.name != product.name || player.in_hands.product_count <= 0:
+		elif in_hands.product.name != product.name || player.in_hands.product_count <= 0 || count == max_count:
 			return
 		player.in_hands.product_count -= 1
 		add_one()

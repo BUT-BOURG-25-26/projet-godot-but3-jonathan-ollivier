@@ -8,6 +8,7 @@ script = ExtResource("1_h8r3p")
 name = "Beer"
 unit_price = 5.0
 unit_per_box = 24
+container_type = 1
 model = ExtResource("1_wb0n2")
 translate = Vector3(0, -0.45, 0)
 rotation = Vector3(0, 0, 0)

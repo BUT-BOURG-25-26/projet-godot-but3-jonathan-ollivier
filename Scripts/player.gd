@@ -67,13 +67,18 @@ func _physics_process(delta):
 	move_and_slide()
 
 func handle_click(event):
-	var hit = _shoot_raycast(Global.CLICKABLE | Global.HOLDABLE, event.position)
-	if hit:
-		hit.collider.clicked.emit(self, event.button_index if event is InputEventMouseButton else MOUSE_BUTTON_LEFT)
-	elif in_hands:
-		var terrain_hit = _shoot_raycast(Global.TERRAIN)
-		if terrain_hit:
-			clear_hand(terrain_hit.position)
+	if event.button_index in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT]:
+		var hit = _shoot_raycast(Global.CLICKABLE | Global.HOLDABLE, event.position)
+		if hit:
+			hit.collider.clicked.emit(self, event.button_index if event is InputEventMouseButton else MOUSE_BUTTON_LEFT)
+		elif in_hands:
+			var terrain_hit = _shoot_raycast(Global.TERRAIN)
+			if terrain_hit:
+				clear_hand(terrain_hit.position)
+	elif event.button_index in [MOUSE_BUTTON_WHEEL_DOWN, MOUSE_BUTTON_WHEEL_UP]:
+		if in_hands is Furniture && in_hands.ghost:
+			var sign = -1 if event.button_index == MOUSE_BUTTON_WHEEL_DOWN else 1
+			in_hands.ghost.rotation.y += sign * PI/10
 			
 
 func get_in_hand(item) -> void:

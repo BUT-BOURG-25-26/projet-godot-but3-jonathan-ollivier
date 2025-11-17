@@ -106,13 +106,18 @@ func init_behavior():
 	var product_count = randi_range(1, 3)
 	for i in range(product_count):
 		var aisle = Game.instance.level.aisles.pick_random() as Aisle
+		if !aisle:
+			continue
 		var storage = aisle.products_storages.pick_random() as ProductStorage 
 		if storage.count == 0:
 			continue
 			
 		tasks.append(GotoTask.new(self, storage.front.global_position))
 		tasks.append(TakeTask.new(self, storage, randi_range(1, 3)))
-	tasks.append(CheckoutTask.new(self, Game.instance.level.checkout_counters.pick_random()))
+	
+	var cc = Game.instance.level.checkout_counters.pick_random()
+	if cc:
+		tasks.append(CheckoutTask.new(self, cc))
 	tasks.append(GotoTask.new(self, Game.instance.random_npc_spawn_location()))
 	# TODO: le faire aller à la caisse pour attendre
 
@@ -166,6 +171,9 @@ func _on_clicked(player: Player, mouseButton: int) -> void:
 	var look_at_pos = player.global_position
 	look_at_pos.y = 0
 	look_at(look_at_pos)
+	
+	velocity += (global_position - player.global_position).normalized() * 100
+	move_and_slide()
 
 
 static func create() -> NPC:

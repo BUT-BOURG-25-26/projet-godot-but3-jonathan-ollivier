@@ -5,21 +5,25 @@
 
 [node name="Fridge" type="Node3D"]
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_p4sea")]
+[node name="Model" parent="." instance=ExtResource("1_p4sea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.615358, 0)
 
 [node name="ProductStorage" parent="." instance=ExtResource("2_qf18k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15806, 3.5143, 0.0124254)
 size = Vector3(1.52344, 1.19482, 3.14941)
+container_type = 1
 
 [node name="ProductStorage2" parent="." instance=ExtResource("2_qf18k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15806, 4.7854, 0.0124254)
 size = Vector3(1.52344, 1.19482, 3.14941)
+container_type = 1
 
 [node name="ProductStorage3" parent="." instance=ExtResource("2_qf18k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15806, 6.16747, 0.0124254)
 size = Vector3(1.52344, 1.19482, 3.14941)
+container_type = 1
 
 [node name="ProductStorage4" parent="." instance=ExtResource("2_qf18k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15806, 2.23463, 0.0124254)
 size = Vector3(1.52344, 1.19482, 3.14941)
+container_type = 1
