@@ -19,8 +19,8 @@ func _init() -> void:
 func _ready() -> void:
 	level.init()
 	
-	if Global.dev:
-		var npc = level.add_npc(Vector3(10, 0, 0))
+	#if Global.dev:
+		#var npc = level.add_npc(Vector3(10, 0, 0))
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 

@@ -131,7 +131,6 @@ text = "Open"
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer/Open"]
 layout_mode = 2
-button_pressed = true
 
 [node name="ShopName" type="HBoxContainer" parent="MarginContainer/ColorRect/VBoxContainer/Tabs/TabContainer/Global/Global/ColorRect/ScrollContainer/MarginContainer/CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)

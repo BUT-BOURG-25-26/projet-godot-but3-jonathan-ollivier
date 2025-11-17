@@ -7,16 +7,17 @@ var checkout_counters: Array[CheckoutCounter] = []
 var npcs: Array[NPC] = []
 
 func init():
-	var rack = add_rack(Vector3(-8, 0, -22), false)
-	
-	var aisle = add_aisle(Vector3(-8, 0, -5), false)
-	aisle.fill_randomly()
-	
-	add_checkout_counter(Vector3(10, 0, 15), false)
-	
-	bake_navigation_mesh()
-	
-	await get_tree().create_timer(1).timeout
+	pass
+	#var rack = add_rack(Vector3(-8, 0, -22), false)
+	#
+	#var aisle = add_aisle(Vector3(-8, 0, -5), false)
+	#aisle.fill_randomly()
+	#
+	#add_checkout_counter(Vector3(10, 0, 15), false)
+	#
+	#bake_navigation_mesh()
+	#
+	#await get_tree().create_timer(1).timeout
 	#for i in range(len(Global.products)):
 		#add_box(Global.products[i], Vector3(0, 10 + 2*i, -10))
 
