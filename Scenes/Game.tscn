@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bisacees2rd6b"]
+[gd_scene load_steps=33 format=3 uid="uid://bisacees2rd6b"]
 
 [ext_resource type="Script" uid="uid://bkfhdxr4v0cxp" path="res://Scripts/game.gd" id="1_kldst"]
 [ext_resource type="Script" uid="uid://dbsvbkmx1ds3h" path="res://Scripts/level.gd" id="2_7lihs"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dgyfq0q2kjka3" path="res://UI/Crosshair.tscn" id="17_4q8tf"]
 [ext_resource type="PackedScene" uid="uid://bkgvbpkj5bypy" path="res://UI/ShopOpen.tscn" id="18_x3xnh"]
 [ext_resource type="PackedScene" uid="uid://d2gr0276yr1s6" path="res://UI/ShopButton.tscn" id="19_8r6kd"]
+[ext_resource type="PackedScene" uid="uid://c7dmg507wppq6" path="res://UI/ClickButtons.tscn" id="20_tfod6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qxria"]
 sky_top_color = Color(0.384314, 0.756863, 0.898039, 1)
@@ -196,6 +197,8 @@ player = NodePath("../../Level/Player")
 [node name="ShopOpen" parent="CanvasLayer" instance=ExtResource("18_x3xnh")]
 
 [node name="ShopButton" parent="CanvasLayer" instance=ExtResource("19_8r6kd")]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("20_tfod6")]
 
 [node name="NPCSpawn" type="Timer" parent="."]
 wait_time = 10.0
