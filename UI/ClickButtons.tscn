@@ -83,5 +83,7 @@ icon = ExtResource("2_tkw7m")
 icon_alignment = 1
 expand_icon = true
 
+[connection signal="gui_input" from="right" to="." method="_on_right_gui_input"]
 [connection signal="pressed" from="right" to="." method="_on_right_pressed"]
+[connection signal="gui_input" from="left" to="." method="_on_left_gui_input"]
 [connection signal="pressed" from="left" to="." method="_on_left_pressed"]

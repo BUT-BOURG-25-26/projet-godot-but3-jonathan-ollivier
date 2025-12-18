@@ -54,5 +54,7 @@ func _on_npc_spawn_timeout() -> void:
 	Statistics.customer_count += 1
 
 
-func _on_button_pressed() -> void:
+func _on_button_gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch && !event.pressed:
+		return
 	shop.toggle()

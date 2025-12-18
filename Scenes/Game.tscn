@@ -204,7 +204,7 @@ player = NodePath("../../Level/Player")
 wait_time = 10.0
 autostart = true
 
-[connection signal="pressed" from="CanvasLayer/ShopButton/Button" to="." method="_on_button_pressed"]
+[connection signal="gui_input" from="CanvasLayer/ShopButton/Button" to="." method="_on_button_gui_input"]
 [connection signal="timeout" from="NPCSpawn" to="." method="_on_npc_spawn_timeout"]
 
 [editable path="Level/Terrain/Road"]

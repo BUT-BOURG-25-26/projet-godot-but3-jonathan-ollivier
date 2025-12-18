@@ -4,3 +4,8 @@ extends Node
 var generated_cash := 0.0
 var customer_count := 0
 var products_bought := 0
+
+func reset():
+	generated_cash = 0
+	customer_count = 0
+	products_bought = 0

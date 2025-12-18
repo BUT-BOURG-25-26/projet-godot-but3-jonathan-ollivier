@@ -28,11 +28,13 @@ func _ready() -> void:
 func open():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	show()
+	Input.emulate_mouse_from_touch = true
 	joystick.hide()
 
 func close():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	hide()
+	Input.emulate_mouse_from_touch = false
 	joystick.show()
 
 func toggle():

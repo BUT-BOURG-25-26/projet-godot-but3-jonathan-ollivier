@@ -26,8 +26,13 @@ func create_event(mouse_button):
 
 	Input.parse_input_event(release_event)
 
-func _on_right_pressed() -> void:
+func _on_right_gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch && !event.pressed:
+		return
 	create_event(MOUSE_BUTTON_RIGHT)
 
-func _on_left_pressed() -> void:
+
+func _on_left_gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch && !event.pressed:
+		return
 	create_event(MOUSE_BUTTON_LEFT)

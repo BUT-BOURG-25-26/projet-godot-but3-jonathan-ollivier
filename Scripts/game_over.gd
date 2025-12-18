@@ -12,4 +12,5 @@ func _ready() -> void:
 	""" % [Statistics.generated_cash, Statistics.customer_count, Statistics.products_bought]
 
 func _on_main_menu_pressed() -> void:
+	Statistics.reset()
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

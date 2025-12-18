@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_853f1")
 loading_screen = NodePath("Loading")
 
@@ -20,15 +21,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Logo" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Logo"]
 layout_mode = 1
@@ -41,12 +45,14 @@ offset_bottom = 139.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 texture = ExtResource("1_tt5f1")
 stretch_mode = 3
 
 [node name="Buttons" type="Control" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Buttons"]
 layout_mode = 1
@@ -62,6 +68,7 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 theme_override_constants/separation = 25
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer/Buttons/HBoxContainer"]
@@ -84,6 +91,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="Loading"]
 layout_mode = 1
@@ -92,11 +100,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="Loading/CenterContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Loading..."
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer/Play" to="." method="_on_play_gui_input"]
+[connection signal="gui_input" from="MarginContainer/VBoxContainer/Buttons/HBoxContainer/Quit" to="." method="_on_quit_gui_input"]
